@@ -18,6 +18,7 @@
       "defaultValue": "ProductCycle",
       "persistenceScope": "templateGroup"
     },
+    {
       "id": "DisableOpenAPI",
       "name": {
         "text": "Enable _OpenAPI support",
@@ -25,6 +26,21 @@
       },
       "description": {
         "text": "Enables OpenAPI (Swagger) support",
+        "overrideDefaultText": true
+      },
+      "invertBoolean": true,
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "DisableGitHubCI",
+      "name": {
+        "text": "Enable GitHub CI",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Use .github folder with CI definitions",
         "overrideDefaultText": true
       },
       "invertBoolean": true,

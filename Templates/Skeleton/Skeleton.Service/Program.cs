@@ -1,8 +1,8 @@
 using Amazon.S3;
 
-using Company.Placeholder;
-using Company.Placeholder.Abstractions;
-using Company.Placeholder.Controllers;
+using Skeleton;
+using Skeleton.Abstractions;
+using Skeleton.Controllers;
 
 using EventSourcing.Backbone;
 

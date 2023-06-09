@@ -40,7 +40,7 @@
 		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.0-beta.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Company.Placeholder.Abstractions\Company.Placeholder.Abstractions.csproj" />
+	  <ProjectReference Include="..\Skeleton.Abstractions\Skeleton.Abstractions.csproj" />
 	</ItemGroup>
 
 </Project>

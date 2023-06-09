@@ -4,7 +4,7 @@ using EventSourcing.Backbone;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Company.Placeholder.Controllers;
+namespace Skeleton.Controllers;
 
 [ApiController]
 [Route("[controller]")]

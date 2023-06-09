@@ -1,11 +1,11 @@
-using Company.Placeholder.Abstractions;
-using Company.Placeholder.Service.Entities;
+using Skeleton.Abstractions;
+using Skeleton.Service.Entities;
 
 using EventSourcing.Backbone;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Company.Placeholder.Controllers;
+namespace Skeleton.Controllers;
 
 [ApiController]
 [Route("[controller]")]

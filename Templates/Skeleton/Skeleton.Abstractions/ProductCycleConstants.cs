@@ -1,4 +1,4 @@
-﻿namespace Company.Placeholder.Abstractions;
+﻿namespace Skeleton.Abstractions;
 
 /// <summary>
 /// Common constants

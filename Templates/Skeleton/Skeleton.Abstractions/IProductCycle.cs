@@ -2,7 +2,7 @@
 
 using EventSourcing.Backbone;
 
-namespace Company.Placeholder.Abstractions;
+namespace Skeleton.Abstractions;
 
 /// <summary>
 /// Event's schema definition

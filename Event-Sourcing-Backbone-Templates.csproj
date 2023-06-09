@@ -6,8 +6,14 @@
     <PackageId>Event-Sourcing.Backbone.Templates</PackageId>
     <Title>Event Sourcing Backbone</Title>
     <Authors>Me</Authors>
+    <Copyright>Bnaya Eshet</Copyright>
     <Description>Create Event Sourcing starter solution.</Description>
     <PackageTags>Bnaya;Event-Sourcing;Redis;Kafka;S3</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/bnayae/Event-Sourcing-Backbone-Template</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bnayae/Event-Sourcing-Backbone</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
 
     <TargetFramework>netstandard2.0</TargetFramework>
 
@@ -19,7 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Tmplates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
 

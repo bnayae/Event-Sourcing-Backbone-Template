@@ -1,10 +1,10 @@
 ﻿using EventSourcing.Backbone;
-using Company.Placeholder.Abstractions;
+using Skeleton.Abstractions;
 
 // Configuration: https://medium.com/@gparlakov/the-confusion-of-asp-net-configuration-with-environment-variables-c06c545ef732
 
 
-namespace Company.Placeholder;
+namespace Skeleton;
 
 /// <summary>
 ///  DI Extensions for ASP.NET Core

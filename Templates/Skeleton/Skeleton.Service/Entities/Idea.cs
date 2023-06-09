@@ -1,3 +1,3 @@
-﻿namespace Company.Placeholder.Service.Entities;
+﻿namespace Skeleton.Service.Entities;
 
 public record Idea (string title, string describe);

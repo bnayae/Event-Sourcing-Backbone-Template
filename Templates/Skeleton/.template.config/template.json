@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Bnaya",
+  "author": "Bnaya Eshet",
   "classifications": ["Web", "WebAPI"],
   "name": "Event Sourcing Backbone ASP.NET Core Web API / Job",
   "generatorVersions": "[1.0.0.0-*)",
@@ -14,17 +14,17 @@
     "type": "project",
     "keyword": "event-sourcing"
   },
-  "sourceName": "Company.Placeholder",
+  "sourceName": "Skeleton",
   "preferNameDirectory": true,
   "guids": [
-    "53bc9b9d-9d6a-45d4-8429-2a2761773502" // Client ID
+    "53bc9b9d-9d6a-45d4-8429-2a2761773502" 
     ,"9A19103F-16F7-4668-BE54-9A1E7A4F7556"
     ,"9A19103F-1111-1111-BE54-9A1E7A4F7556"
     ,"2150E333-8FDC-42A3-9474-1A3956D46DE8"
   ],
   "sources": [
     {
-      "modifiers": [      
+      "modifiers": [ 
         {
           "condition": "(DisableProducer)",
           "exclude": ["Controllers/ProductCycleProducerController.cs"]
@@ -33,16 +33,6 @@
           "condition": "(DisableConsumer)",
           "exclude": ["Controllers/ProductCycleConsumerController.cs", "Jobs/ProductCycleConsumerJob.cs"]
         }
-        {% comment %} {
-          "condition": "(!UseProgramMain && UseMinimalAPIs && (NoAuth || WindowsAuth))",
-          "exclude": [
-            "Program.cs",
-            "Program.MinimalAPIs.OrgOrIndividualB2CAuth.cs"
-          ],
-          "rename": {
-            "Program.MinimalAPIs.WindowsOrNoAuth.cs": "Program.cs"
-          }
-        } {% endcomment %}
       ]
     }
   ],
@@ -72,6 +62,16 @@
     "EnableConsumer": {
       "type": "computed",
       "value": "(!DisableConsumer)"
+    },
+    "DisableGitHubCI": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Remove the GitHub CI"
+    },
+    "EnableGitHubCI": {
+      "type": "computed",
+      "value": "(!DisableGitHubCI)"
     },
     "s3": {
       "type": "parameter",
@@ -187,10 +187,6 @@
         {
           "choice": "net7.0",
           "description": "Target net8.0"
-        },
-        {
-          "choice": "net6.0",
-          "description": "Target net8.0"
         }
       ],
       "replaces": "{net-framework}",
@@ -217,11 +213,7 @@
       "value": "(!DisableOpenAPI)"
     }
   },
-  "primaryOutputs": [
-    {
-      "path": "Company.Placeholder.Service.csproj"
-    }
-  ],
+  "primaryOutputs": [{ "path": "Skeleton.sln"}],
   "defaultName": "EventSourcingWebApplication",
   "postActions": [
     {

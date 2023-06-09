@@ -1,9 +1,9 @@
-﻿using Company.Placeholder.Abstractions;
+﻿using Skeleton.Abstractions;
 
 using EventSourcing.Backbone;
 using EventSourcing.Backbone.Building;
 
-namespace Company.Placeholder.Controllers;
+namespace Skeleton.Controllers;
 
 /// <summary>
 /// Consumer job
