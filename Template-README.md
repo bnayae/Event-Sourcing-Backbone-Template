@@ -14,10 +14,10 @@
 
 ```bash
 # dotnet build --force
-dotnet pack -c Release --force -o .
-dotnet new install . 
+dotnet pack -c Release --force -o ./out
+dotnet new install ./out 
 dotnet new evtsrc -n {name-of-the-project}
 dotnet new evtsrc -minimal -n {name-of-the-project}
 # dotnet new uninstall {groupIdentity}
-dotnet new uninstall .
+dotnet new uninstall ./out
 ```
