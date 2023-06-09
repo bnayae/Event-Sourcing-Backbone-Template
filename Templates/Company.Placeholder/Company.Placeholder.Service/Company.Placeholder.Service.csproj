@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <UserSecretsId>310ead78-583d-4be8-b5ee-b348770c155d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EventSourcing.Backbone.OpenTelemetry.Extensions" Version="1.2.112" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+	<!-- s3 -->
+	<ItemGroup>
+		<PackageReference Include="AWSSDK.S3" Version="3.7.104.29" />
+		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
+	</ItemGroup>
+
+	<!-- producer -->
+	<ItemGroup>
+		<PackageReference Include="EventSourcing.Backbone.Channels.RedisProducerProvider" Version="1.2.112" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreProducerProvider" Version="1.2.112" />
+	</ItemGroup>
+
+	<!-- consumer -->
+	<ItemGroup>
+		<PackageReference Include="EventSourcing.Backbone.Channels.RedisConsumerProvider" Version="1.2.112" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreConsumerProvider" Version="1.2.112" />
+	</ItemGroup>
+
+	<!-- open-telemetry -->
+	<ItemGroup>
+		<PackageReference Include="OpenTelemetry" Version="1.5.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.5.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.5.0" />
+		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.5.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.5.0-beta.1" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.0-beta.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Company.Placeholder.Abstractions\Company.Placeholder.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

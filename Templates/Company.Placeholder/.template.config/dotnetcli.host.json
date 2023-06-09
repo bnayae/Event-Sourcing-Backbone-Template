@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "EventName": {
+      "longName": "event-name",
+      "shortName": "e"
+    },
+    "DisableProducer": {
+      "longName": "no-producer",
+      "shortName": "np"
+    },
+    "DisableConsumer": {
+      "longName": "no-consumer",
+      "shortName": "nc"
+    },
+    "Framework": {
+      "longName": "framework",
+      "shortName": "f"
+    },
+    "DisableTelemetry": {
+      "longName": "no-telemetry",
+      "shortName": ""
+    },
+    "DisableOpenAPI": {
+      "longName": "no-openapi",
+      "shortName": ""
+    }
+  },
+  "usageExamples": [
+    "dotnet new evtsrc -e MyEvent -n MyCompany.Events"
+  ]
+}

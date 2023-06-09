@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json.schemastore.org/ide.host",
+  "order": 200,
+  "icon": "ide/WebAPI.png",
+  "supportsDocker": true,
+  "symbolInfo": [
+    {
+      "id": "EventName",
+      "name": {
+        "text": "The name of the event family",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "The name of the event family (will be used for the interface name, i.e. Foo will result with IFoo)",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "ProductCycle",
+      "persistenceScope": "templateGroup"
+    },
+      "id": "DisableOpenAPI",
+      "name": {
+        "text": "Enable _OpenAPI support",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Enables OpenAPI (Swagger) support",
+        "overrideDefaultText": true
+      },
+      "invertBoolean": true,
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "DisableTelemetry",
+      "name": {
+        "text": "Enable Telemetry support",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Enable Open Telemetry configuration",
+        "overrideDefaultText": true
+      },
+      "invertBoolean": true,
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "UseMinimalAPIs",
+      "name": {
+        "text": "Use controllers (uncheck to use minimal APIs)",
+        "overrideDefaultText": true
+      },
+      "invertBoolean": true,
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "Producer",
+      "name": {
+        "text": "Generate producer code & setting",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "Consumer",
+      "name": {
+        "text": "Generate consumer code & setting",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "true",
+      "persistenceScope": "templateGroup"
+    }
+  ]
+}
