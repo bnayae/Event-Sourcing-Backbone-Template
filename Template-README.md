@@ -15,7 +15,7 @@
 ```bash
 # dotnet build --force
 dotnet pack -c Release --force -o ./out
-dotnet new -i ./out 
+dotnet new install ./out 
 dotnet new evtsrc -n {name-of-the-project}
 dotnet new evtsrc -minimal -n {name-of-the-project}
 # dotnet new uninstall {groupIdentity}
