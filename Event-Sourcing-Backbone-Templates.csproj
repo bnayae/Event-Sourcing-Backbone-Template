@@ -7,6 +7,7 @@
     <Title>Event Sourcing Backbone</Title>
     <Authors>Me</Authors>
     <Copyright>Bnaya Eshet</Copyright>
+    <PackageCopyright>Bnaya Eshet</PackageCopyright>
     <Description>Create Event Sourcing starter solution.</Description>
     <PackageTags>Bnaya;Event-Sourcing;Redis;Kafka;S3</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
@@ -20,13 +21,16 @@
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
-    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <EnableDefaultItems>false</EnableDefaultItems>
     <NoDefaultExcludes>true</NoDefaultExcludes>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageOutputPath>.</PackageOutputPath>  
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="icon.png" Pack="true" PackagePath="\"/>
-    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**" />
     <Compile Remove="**\*" />
   </ItemGroup>
 
