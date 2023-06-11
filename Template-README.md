@@ -40,11 +40,11 @@ dotnet new evtsrc -uri event-demo -s3 --aws-profile AWS_PROFILE --aws-profile-re
 Only Consumer:  
 
 ```bash
-dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+dotnet new evtsrc --no-producer -uri event-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent
 ```
 
 Only Producer:   
 
 ```bash
-dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+dotnet new evtsrc --no-consumer -uri event-demo -n MyCompany.Events -eb MyEvent
 ```
