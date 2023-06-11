@@ -34,7 +34,8 @@
           "exclude": [
             "Skeleton.Service/Controllers/ProductCycleProducerController.cs",
             "Skeleton.Service/Extensions/ProductCycle/ProductCycleProducerExtensions.cs",
-            "Skeleton.Service/Jobs/ProductCycleConsumerJob.NoProducer.cs"
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.cs",
+            "Skeleton.Service/Entities/**.*"
             ]
         },
         {
@@ -68,6 +69,13 @@
       "replaces": "ProductCycle",
       "FileRename": "ProductCycle",
       "description": "The name of the events-bundle, i.e. Foo will generate IFoo interface for the interface holding the events definitions"
+    },
+    "NugetVersion": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{nuget-version}",
+      "defaultValue": "1.2.114",
+      "description": "The NuGet version of the EventSOurcing.Backbone"
     },
     "DisableProducer": {
       "type": "parameter",
@@ -110,7 +118,7 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "{CHANGE_THE_CONSUMER_GROUP}",
-      "defaultValue": "CHANGE_THE_CONSUMER_GROUP",
+      "defaultValue": "main-consumer",
       "description": "The stream Consumer Group."
     },
     "s3": {
@@ -132,6 +140,13 @@
       "defaultValue": "CHANGE_AWS_PROFILE",
       "replaces": "{AWS_PROFILE}",
       "description": "Set the AWS profile. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
+    },
+    "awsProfileRegion": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "CHANGE_AWS_PROFILE_REGION",
+      "replaces": "{AWS_PROFILE_REGION}",
+      "description": "Set the AWS profile's region. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
     },
     "ExcludeLaunchSettings": {
       "type": "parameter",

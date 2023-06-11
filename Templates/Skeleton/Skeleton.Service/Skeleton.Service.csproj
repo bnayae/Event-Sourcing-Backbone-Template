@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EventSourcing.Backbone.OpenTelemetry.Extensions" Version="1.2.112" />
+    <PackageReference Include="EventSourcing.Backbone.OpenTelemetry.Extensions" Version="{nuget-version}" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -23,16 +23,16 @@
 	<!--#if (EnableProducer) -->
 	<!-- producer -->
 	<ItemGroup>
-		<PackageReference Include="EventSourcing.Backbone.Channels.RedisProducerProvider" Version="1.2.112" />
-		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreProducerProvider" Version="1.2.112" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.RedisProducerProvider" Version="{nuget-version}" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreProducerProvider" Version="{nuget-version}" />
 	</ItemGroup>
 	<!--#endif -->
 
 	<!--#if (EnableConsumer) -->
 	<!-- consumer -->
 	<ItemGroup>
-		<PackageReference Include="EventSourcing.Backbone.Channels.RedisConsumerProvider" Version="1.2.112" />
-		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreConsumerProvider" Version="1.2.112" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.RedisConsumerProvider" Version="{nuget-version}" />
+		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreConsumerProvider" Version="{nuget-version}" />
 	</ItemGroup>
 	<!--#endif -->
 	

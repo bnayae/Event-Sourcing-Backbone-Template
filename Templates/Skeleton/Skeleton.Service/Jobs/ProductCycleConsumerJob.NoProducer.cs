@@ -34,6 +34,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
             throw new EventSourcingException($"Consumer's registration found under the [{ProductCycleConstants.URI}] key.");
         _builder = consumerBuilder.WithLogger(logger);
         _logger = logger;
+        logger.LogInformation("Consumer starts listening on: {URI}", ProductCycleConstants.URI);
     }
 
     #endregion Ctor
@@ -81,7 +82,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         var meta = consumerMetadata.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, "handling {event} [{id}]: {title}", meta.Operation, meta.MessageId, title);
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.PlanedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string doc)
@@ -94,7 +95,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
                                    {doc}
                                    """, meta.Operation, id, version, doc);
 
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.ReviewedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string[] notes)
@@ -107,7 +108,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
                                    {notes}
                                    """, meta.Operation, id, version, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.ImplementedAsync(ConsumerMetadata consumerMetadata, string id, Version version)
@@ -117,7 +118,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
                                    """, meta.Operation, id, version);
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.TestedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string[] notes)
@@ -130,7 +131,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
                                    {notes}
                                    """, meta.Operation, id, version, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.DeployedAsync(ConsumerMetadata consumerMetadata, string id, Version version)
@@ -138,6 +139,8 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         var meta = consumerMetadata.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, "handling {event} [{id}]: {version}", meta.Operation, id, version);
+
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
     async ValueTask IProductCycleConsumer.RejectedAsync(ConsumerMetadata consumerMetadata,
@@ -158,7 +161,7 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
                                    ---
                                    """, meta.Operation, id, version, operation, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required when configuring the consumer to Ack on success.
+        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 }
 

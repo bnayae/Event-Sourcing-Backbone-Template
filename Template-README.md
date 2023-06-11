@@ -23,17 +23,28 @@ dotnet new evtsrc -minimal -n {name-of-the-project}
 dotnet new uninstall .
 ```
 
-## Command Samples
+## CLI
+
+Minimal:
 
 ```bash
 dotnet new evtsrc -uri event-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent
-
-# With s3 storage
-dotnet new evtsrc -uri event-demo -s3 --aws-profile AUTH_PROFILE --s3-bucket event-sourcing-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
-
-# Only consumer
-dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
-
-# Only Producer
-dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
 ```
+
+With s3 storage:  
+
+```bash
+dotnet new evtsrc -uri event-demo -s3 --aws-profile AWS_PROFILE --aws-profile-region us-east-1 --s3-bucket event-sourcing-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent
+```
+
+Only Consumer:  
+
+```bash
+dotnet new evtsrc --no-producer -uri event-demo --consumer-group main-consumer -n MyCompany.Events.Consumer -eb MyEvent
+```
+
+Only Producer:  
+
+```bash
+dotnet new evtsrc --no-consumer -uri event-demo -n MyCompany.Events.Producer -eb MyEvent
+```  

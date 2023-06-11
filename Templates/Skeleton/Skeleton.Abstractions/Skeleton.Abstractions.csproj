@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="EventSourcing.Backbone.Abstractions" Version="1.2.112" />
-		<PackageReference Include="EventSourcing.Backbone.SrcGen" Version="1.2.112" />
+		<PackageReference Include="EventSourcing.Backbone.Abstractions" Version="{nuget-version}" />
+		<PackageReference Include="EventSourcing.Backbone.SrcGen" Version="{nuget-version}" />
 	</ItemGroup>
 
 </Project>

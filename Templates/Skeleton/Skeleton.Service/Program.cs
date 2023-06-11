@@ -41,7 +41,9 @@ services.AddKeyedConsumer(ProductCycleConstants.URI, ProductCycleConstants.S3_BU
 services.AddKeyedConsumer(ProductCycleConstants.URI, env);
 #endif
 
+#if (EnableConsumer)
 services.AddHostedService<ConsumerJob>();
+#endif
 
 
 // ###############  EVENT SOURCING CONFIGURATION ENDS ############################
@@ -83,4 +85,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var logger = app.Services.GetService<ILogger<Program>>();
+List<string> switches = new();
+#if (EnableProducer)
+switches.Add("Producer");
+#endif
+#if (EnableConsumer)
+switches.Add("Consumer");
+#endif
+#if (s3)
+switches.Add("S3 Storage [Bucket:{CHANGE_THE_BUCKET}, Profile:{AWS_PROFILE}, Region:{AWS_PROFILE_REGION}]");
+#endif
+logger.LogInformation("Service Configuration Event Sourcing `{event-bundle}` on URI: `{URI}`, Features: [{features}]", "ProductCycle", ProductCycleConstants.URI, string.Join(", ", switches));
+    
 app.Run();

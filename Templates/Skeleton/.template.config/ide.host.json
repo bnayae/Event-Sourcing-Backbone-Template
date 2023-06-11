@@ -19,6 +19,90 @@
       "persistenceScope": "templateGroup"
     },
     {
+      "id": "uri",
+      "name": {
+        "text": "The stream URI.",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "The stream UR. for example, Redis provider will use it as the Redis Stream key",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "CHANGE_THE_URI",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "ConcumerGroup",
+      "name": {
+        "text": "The stream Consumer Group.",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Consumer Group dictate whether consumer can or cannot consume same message (ignore when consumer is disabled)",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "main-consumer",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "s3",
+      "name": {
+        "text": "S3 storage.",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Whether to have S3 as the events' data storage.",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "false",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "s3Bucket",
+      "name": {
+        "text": "Name of the s3 bucket.",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "Only relevant when S3 is checked.",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "CHANGE_THE_BUCKET",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "awsProfile",
+      "name": {
+        "text": "Set the AWS profile (ignored when S3 not checked).",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "CHANGE_AWS_PROFILE",
+      "persistenceScope": "templateGroup"
+    },
+    {
+      "id": "awsProfileRegion",
+      "name": {
+        "text": "Set the AWS profile's region (ignored when S3 not checked).",
+        "overrideDefaultText": true
+      },
+      "description": {
+        "text": "see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F",
+        "overrideDefaultText": true
+      },
+      "isVisible": true,
+      "defaultValue": "CHANGE_AWS_PROFILE_REGION",
+      "persistenceScope": "templateGroup"
+    },
+    {
       "id": "DisableOpenAPI",
       "name": {
         "text": "Enable _OpenAPI support",
