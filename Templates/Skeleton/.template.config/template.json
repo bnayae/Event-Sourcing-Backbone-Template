@@ -47,6 +47,7 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "ProductCycle",
+      "FileRename": "ProductCycle",
       "description": "The name of the events-bundle, i.e. Foo will generate IFoo interface for the interface holding the events definitions"
     },
     "DisableProducer": {
