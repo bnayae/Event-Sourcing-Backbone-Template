@@ -25,15 +25,14 @@ dotnet new uninstall .
 
 ## Command Samples
 
-```bash
-dotnet new evtsrc -uri event-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent
+GetStarted:  
+`dotnet new evtsrc -uri event-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent`  
 
-# With s3 storage
-dotnet new evtsrc -uri event-demo -s3 --aws-profile AUTH_PROFILE --s3-bucket event-sourcing-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+With s3 storage:  
+`dotnet new evtsrc -uri event-demo -s3 --aws-profile AUTH_PROFILE --s3-bucket event-sourcing-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent` 
 
-# Only consumer
-dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+Only Consumer:  
+`dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent`  
 
-# Only Producer
-dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
-```
+Only Producer:   
+`dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent`
