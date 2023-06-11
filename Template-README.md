@@ -16,8 +16,24 @@
 # dotnet build --force
 dotnet pack -c Release --force -o .
 dotnet new install . 
+dotnet new evtsrc -h
 dotnet new evtsrc -n {name-of-the-project}
 dotnet new evtsrc -minimal -n {name-of-the-project}
 # dotnet new uninstall {groupIdentity}
 dotnet new uninstall .
+```
+
+## Command Samples
+
+```bash
+dotnet new evtsrc -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+
+# With s3 storage
+dotnet new evtsrc -uri event-demo --s3 --aws-profile AUTH_PROFILE --s3-bucket event-sourcing-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+
+# Only consumer
+dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
+
+#Only Producer
+dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
 ```
