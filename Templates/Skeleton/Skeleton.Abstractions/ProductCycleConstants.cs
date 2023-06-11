@@ -3,10 +3,13 @@
 /// <summary>
 /// Common constants
 /// </summary>
-[Obsolete("CHANGE THE VALUES", false)]
 public static class ProductCycleConstants
 {
-    public const string URI = "CHANGE-ME";
-    public const string S3_BUCKET = "event-sourcing-change-me";
-    public const string CONSUMER_GROUP = "CHANGE_ME-EVENT-SOURCING-CONSUMER-GROUP";
+    public const string URI = "{CHANGE_THE_URI}";
+    #if (EnableConsumer)
+    public const string CONSUMER_GROUP = "{CHANGE_THE_CONSUMER_GROUP}";
+    #endif
+    #if (s3)
+    public const string S3_BUCKET = "{CHANGE_THE_BUCKET}";
+    #endif
 }

@@ -16,20 +16,30 @@ public static class ProductCycleProducerExtensions
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="uri">The URI.</param>
+    #if (s3)
     /// <param name="s3Bucket">The s3 bucket.</param>
+    #endif
     /// <param name="env">The environment.</param>
     /// <returns></returns>
     public static IServiceCollection AddProductCycleProducer
         (
         this IServiceCollection services,
         string uri,
+        #if (s3)
         string s3Bucket,
+        #endif
         Env env)
     {
+        #if (s3)
         var s3Options = new S3Options { Bucket = s3Bucket };
+        #endif
         services.AddSingleton(ioc =>
         {
-            return BuildProducer(uri, env, ioc, s3Options);
+            return BuildProducer(uri, env, ioc
+                                #if (s3) 
+                                , s3Options 
+                                #endif 
+                                );
         });
 
         return services;
@@ -41,34 +51,50 @@ public static class ProductCycleProducerExtensions
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="uri">The URI.</param>
+    #if (s3)
     /// <param name="s3Bucket">The s3 bucket.</param>
+    #endif
     /// <param name="env">The environment.</param>
     /// <returns></returns>
     public static IServiceCollection AddKeyedProductCycleProducer
         (
         this IServiceCollection services,
         string uri,
+        #if (s3)
         string s3Bucket,
+        #endif
         Env env)
     {
+        #if (s3)
         var s3Options = new S3Options { Bucket = s3Bucket };
+        #endif
         services.AddKeyedSingleton(ioc =>
         {
-            return BuildProducer(uri, env, ioc, s3Options);
+            return BuildProducer(uri, env, ioc
+                                    #if (s3)
+                                    , s3Options
+                                    #endif
+            );
         }, uri);
 
         return services;
     }
 
-    private static IProductCycleProducer BuildProducer(string uri, Env env, IServiceProvider ioc, S3Options s3Options)
+    private static IProductCycleProducer BuildProducer(string uri, Env env, IServiceProvider ioc
+    #if (s3)
+    , S3Options s3Options
+    #endif
+    )
     {
         ILogger logger = ioc.GetService<ILogger<Program>>() ?? throw new EventSourcingException("Logger is missing");
         IProductCycleProducer producer = ioc.ResolveRedisProducerChannel()
-                               .ResolveS3Storage(s3Options)
-                             .Environment(env)
-                             .Uri(uri)
-                             .WithLogger(logger)
-                             .BuildProductCycleProducer();
+                                #if (s3)
+                                .ResolveS3Storage(s3Options)
+                                #endif
+                                .Environment(env)
+                                .Uri(uri)
+                                .WithLogger(logger)
+                                .BuildProductCycleProducer();
         return producer;
     }
 }

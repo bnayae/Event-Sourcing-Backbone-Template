@@ -1,14 +1,10 @@
+#if (s3)
 using Amazon.S3;
-
+#endif
 using Skeleton;
 using Skeleton.Abstractions;
 using Skeleton.Controllers;
-
-using EventSourcing.Backbone;
-
 using Microsoft.OpenApi.Models;
-
-using StackExchange.Redis;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -16,22 +12,34 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
+#if (s3)
 // inject AWS credentials according to the profile definition at appsettings.json
 // Remember to set it right!
 // see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F
 services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 services.AddAWSService<IAmazonS3>();
-
-
+#endif
 
 IWebHostEnvironment environment = builder.Environment;
 string env = environment.EnvironmentName;
 
+#if (EnableTelemetry)
 services.AddOpenTelemetryForEventSourcing(environment);
+#endif
 
 services.AddEventSourceRedisConnection();
+#if (EnableProducer && s3 )
 services.AddKeyedProductCycleProducer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET, env);
+#endif
+#if (EnableProducer && !s3 )
+services.AddKeyedProductCycleProducer(ProductCycleConstants.URI, env);
+#endif
+#if (EnableConsumer && s3)
 services.AddKeyedConsumer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET, env);
+#endif
+#if (EnableConsumer && !s3)
+services.AddKeyedConsumer(ProductCycleConstants.URI, env);
+#endif
 
 services.AddHostedService<ConsumerJob>();
 

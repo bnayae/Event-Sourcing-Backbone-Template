@@ -64,17 +64,6 @@
       "persistenceScope": "templateGroup"
     },
     {
-      "id": "UseMinimalAPIs",
-      "name": {
-        "text": "Use controllers (uncheck to use minimal APIs)",
-        "overrideDefaultText": true
-      },
-      "invertBoolean": true,
-      "isVisible": true,
-      "defaultValue": "true",
-      "persistenceScope": "templateGroup"
-    },
-    {
       "id": "Producer",
       "name": {
         "text": "Generate producer code & setting",

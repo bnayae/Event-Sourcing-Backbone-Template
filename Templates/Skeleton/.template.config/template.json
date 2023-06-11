@@ -20,7 +20,8 @@
     "53bc9b9d-9d6a-45d4-8429-2a2761773502",
     "9A19103F-16F7-4668-BE54-9A1E7A4F7556",
     "9A19103F-1111-1111-BE54-9A1E7A4F7556",
-    "2150E333-8FDC-42A3-9474-1A3956D46DE8"
+    "2150E333-8FDC-42A3-9474-1A3956D46DE8",
+    "310ead78-583d-4be8-b5ee-b348770c155d"
   ],
   "sources": [
     {
@@ -30,13 +31,31 @@
         },
         {
           "condition": "(DisableProducer)",
-          "exclude": ["Controllers/ProductCycleProducerController.cs"]
+          "exclude": [
+            "Skeleton.Service/Controllers/ProductCycleProducerController.cs",
+            "Skeleton.Service/Extensions/ProductCycle/ProductCycleProducerExtensions.cs",
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.NoProducer.cs"
+            ]
         },
         {
           "condition": "(DisableConsumer)",
           "exclude": [
-            "Controllers/ProductCycleConsumerController.cs",
-            "Jobs/ProductCycleConsumerJob.cs"
+            "Skeleton.Service/Controllers/ProductCycleConsumerController.cs",
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.cs",
+            "Skeleton.Service/Extensions/ConsumerExtensions.cs",
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.cs"
+          ]
+        },
+        {
+          "condition": "(EnableConsumer && DisableProducer)",
+          "rename": {
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.NoProducer.cs": "Skeleton.Service/Jobs/ProductCycleConsumerJob.cs"
+          }
+        },
+        {
+          "condition": "(EnableProducer)",
+          "exclude": [
+            "Skeleton.Service/Jobs/ProductCycleConsumerJob.NoProducer.cs"
           ]
         }
       ]
@@ -80,16 +99,38 @@
       "type": "computed",
       "value": "(!DisableGitHubCI)"
     },
+    "uri": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{CHANGE_THE_URI}",
+      "defaultValue": "CHANGE_THE_URI",
+      "description": "The stream URI."
+    },
+    "ConcumerGroup": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{CHANGE_THE_CONSUMER_GROUP}",
+      "defaultValue": "CHANGE_THE_CONSUMER_GROUP",
+      "description": "The stream Consumer Group."
+    },
     "s3": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Whether to have S3 as the events' data storage."
     },
+    "s3Bucket": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{CHANGE_THE_BUCKET}",
+      "defaultValue": "CHANGE_THE_BUCKET",
+      "description": "Name of the s3 bucket."
+    },
     "awsProfile": {
       "type": "parameter",
       "datatype": "string",
-      "defaultValue": "playground",
+      "defaultValue": "CHANGE_AWS_PROFILE",
+      "replaces": "{AWS_PROFILE}",
       "description": "Set the AWS profile. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
     },
     "ExcludeLaunchSettings": {

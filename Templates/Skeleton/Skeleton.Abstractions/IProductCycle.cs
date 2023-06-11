@@ -8,8 +8,12 @@ namespace Skeleton.Abstractions;
 /// Event's schema definition
 /// Return type of each method should be  <see cref="System.Threading.Tasks.ValueTask"/>
 /// </summary>
+#if (EnableProducer)
 [EventsContract(EventsContractType.Producer)]
+#endif
+#if (EnableConsumer)
 [EventsContract(EventsContractType.Consumer)]
+#endif
 [Obsolete("Either use the Producer or Consumer version of this interface", true)]
 public interface IProductCycle
 {

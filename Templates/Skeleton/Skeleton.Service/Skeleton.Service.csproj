@@ -12,24 +12,31 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+	<!--#if (s3) -->
 	<!-- s3 -->
 	<ItemGroup>
-		<PackageReference Include="AWSSDK.S3" Version="3.7.104.29" />
-		<PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
+	  <PackageReference Include="AWSSDK.S3" Version="3.7.104.29" />
+	  <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
 	</ItemGroup>
-
+	<!--#endif -->
+	
+	<!--#if (EnableProducer) -->
 	<!-- producer -->
 	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.RedisProducerProvider" Version="1.2.112" />
 		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreProducerProvider" Version="1.2.112" />
 	</ItemGroup>
+	<!--#endif -->
 
+	<!--#if (EnableConsumer) -->
 	<!-- consumer -->
 	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.RedisConsumerProvider" Version="1.2.112" />
 		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreConsumerProvider" Version="1.2.112" />
 	</ItemGroup>
-
+	<!--#endif -->
+	
+	<!--#if (EnableTelemetry) -->
 	<!-- open-telemetry -->
 	<ItemGroup>
 		<PackageReference Include="OpenTelemetry" Version="1.5.0" />
@@ -39,6 +46,8 @@
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.5.0-beta.1" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.0-beta.1" />
 	</ItemGroup>
+	<!--#endif -->
+
 	<ItemGroup>
 	  <ProjectReference Include="..\Skeleton.Abstractions\Skeleton.Abstractions.csproj" />
 	</ItemGroup>
