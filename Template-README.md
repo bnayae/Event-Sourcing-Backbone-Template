@@ -34,6 +34,6 @@ dotnet new evtsrc -uri event-demo --s3 --aws-profile AUTH_PROFILE --s3-bucket ev
 # Only consumer
 dotnet new evtsrc --no-producer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
 
-#Only Producer
+# Only Producer
 dotnet new evtsrc --no-consumer -uri event-demo --concumer-group main-consumer -n MyCompany.Events -eb MyEvent
 ```
