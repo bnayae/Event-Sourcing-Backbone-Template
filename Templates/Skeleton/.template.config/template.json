@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Bnaya Eshet",
-  "classifications": ["Web", "WebAPI"],
+  "classifications": ["Web", "WebAPI", "Event-Sourcing", "Redis", "S3", "Kafka"],
   "name": "Event Sourcing Backbone ASP.NET Core Web API / Job",
   "generatorVersions": "[1.0.0.0-*)",
   "description": "A project template for creating an Event Sourcing using `EventSourcing.Backbone` framework over ASP.NET Core application with an example of Controller for producing event and a job example for consuming the event.",
@@ -43,11 +43,11 @@
     }
   ],
   "symbols": {
-    "EventName": {
+    "EventBundle": {
       "type": "parameter",
       "datatype": "string",
       "replaces": "ProductCycle",
-      "description": "The name of the schema interface."
+      "description": "The name of the events-bundle, i.e. Foo will generate IFoo interface for the interface holding the events definitions"
     },
     "DisableProducer": {
       "type": "parameter",

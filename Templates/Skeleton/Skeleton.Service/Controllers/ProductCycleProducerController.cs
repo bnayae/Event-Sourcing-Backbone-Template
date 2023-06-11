@@ -1,8 +1,6 @@
 using Skeleton.Abstractions;
 using Skeleton.Service.Entities;
-
 using EventSourcing.Backbone;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Skeleton.Controllers;
@@ -11,11 +9,11 @@ namespace Skeleton.Controllers;
 [Route("[controller]")]
 public class ProductCycleProducerController : ControllerBase
 {
-    private readonly ILogger<ProducerController> _logger;
+    private readonly ILogger<ProductCycleProducerController> _logger;
     private readonly IProductCycleProducer _producer;
 
-    public ProducerController(
-        ILogger<ProducerController> logger,
+    public ProductCycleProducerController(
+        ILogger<ProductCycleProducerController> logger,
         IKeyed<IProductCycleProducer> producerKeyed)
     {
         _logger = logger;

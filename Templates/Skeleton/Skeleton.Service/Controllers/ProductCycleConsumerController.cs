@@ -1,7 +1,6 @@
+using Skeleton.Abstractions;
 using System.Text.Json;
-
 using EventSourcing.Backbone;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Skeleton.Controllers;
@@ -10,11 +9,11 @@ namespace Skeleton.Controllers;
 [Route("[controller]")]
 public class ProductCycleConsumerController : ControllerBase
 {
-    private readonly ILogger<ConsumerController> _logger;
+    private readonly ILogger<ProductCycleConsumerController> _logger;
     private readonly IConsumerReceiver _receiver;
 
-    public ConsumerController(
-        ILogger<ConsumerController> logger,
+    public ProductCycleConsumerController(
+        ILogger<ProductCycleConsumerController> logger,
         IKeyed<IConsumerReadyBuilder> consumerBuilderKeyed)
     {
         _logger = logger;
