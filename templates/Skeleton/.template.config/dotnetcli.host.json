@@ -39,6 +39,10 @@
       "longName": "s3-storage",
       "shortName": "s3"
     },
+    "s3Credentials": {
+      "longName": "s3-credentials",
+      "shortName": "s3-cred"
+    },
     "s3Bucket": {
       "longName": "s3-bucket",
       "shortName": "s3b"

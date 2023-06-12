@@ -133,6 +133,22 @@
       "defaultValue": "false",
       "description": "Whether to have S3 as the events' data storage."
     },
+    "s3Credentials": {
+      "type": "parameter",
+      "description": "Specify the AWS credential method (by default it use the `profile` choice).",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "profile",
+          "description": "Set a profile and region within `appsettings.json`"
+        },
+        {
+          "choice": "environment-variable",
+          "description": "Looks for the following environment variable [`S3_EVENT_SOURCE_REGION`, `S3_EVENT_SOURCE_ACCESS_KEY` and `S3_EVENT_SOURCE_SECRET`]"
+        }
+      ],
+      "defaultValue": "profile"
+    },
     "s3Bucket": {
       "type": "parameter",
       "datatype": "string",

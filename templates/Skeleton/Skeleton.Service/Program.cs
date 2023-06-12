@@ -12,7 +12,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
-#if (s3)
+#if (s3 && s3Credentials == "profile")
 // inject AWS credentials according to the profile definition at appsettings.json
 // Remember to set it right!
 // see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F
