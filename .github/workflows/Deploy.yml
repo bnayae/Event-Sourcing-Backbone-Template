@@ -50,6 +50,6 @@ jobs:
         shell: bash
 
       - name: Push 
-        run: dotnet nuget push ./*.nupkg -k ${{ secrets.NUGET_PUBLISH }} -s https://api.nuget.org/v3/index.json --skip-duplicate 
+        run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_PUBLISH }} -s https://api.nuget.org/v3/index.json --skip-duplicate 
   
  

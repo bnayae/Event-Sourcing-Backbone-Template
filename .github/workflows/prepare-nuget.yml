@@ -31,7 +31,7 @@ jobs:
 
       - name: Increment Version
         run: |
-          perl -pi -e 's#<PackageVersion>([0-9]+)\.([0-9]+)\.([0-9]+)</PackageVersion>#"<PackageVersion>$1.$2.${\( $3+1 )}</PackageVersion>"#eg' Event-Sourcing-Backbone-Templates.csproj
+          perl -pi -e 's#<PackageVersion>([0-9]+)\.([0-9]+)\.([0-9]+)(.*)</PackageVersion>#"<PackageVersion>$1.$2.${\( $3+1 )}$4</PackageVersion>"#eg' Event-Sourcing-Backbone-Templates.csproj
         shell: bash
 
       - name: Commit changes
