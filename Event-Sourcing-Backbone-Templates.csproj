@@ -26,6 +26,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageOutputPath>.</PackageOutputPath>  
     <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
