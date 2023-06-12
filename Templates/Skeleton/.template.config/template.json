@@ -58,6 +58,12 @@
           "exclude": [
             "Skeleton.Service/Jobs/ProductCycleConsumerJob.NoProducer.cs"
           ]
+        },
+        {
+          "condition": "(DisableGitHubCI)",
+          "exclude": [
+            ".github/**.*"
+          ]
         }
       ]
     }
@@ -100,12 +106,19 @@
     "DisableGitHubCI": {
       "type": "parameter",
       "dataType": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Remove the GitHub CI"
     },
     "EnableGitHubCI": {
       "type": "computed",
       "value": "(!DisableGitHubCI)"
+    },
+    "EmailForCI": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{ci-email}",
+      "defaultValue": "ci@github.com",
+      "description": "A valid email for the CI"
     },
     "uri": {
       "type": "parameter",
@@ -147,6 +160,43 @@
       "defaultValue": "CHANGE_AWS_PROFILE_REGION",
       "replaces": "{AWS_PROFILE_REGION}",
       "description": "Set the AWS profile's region. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
+    },
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net8.0",
+          "description": "Target net8.0"
+        },
+        {
+          "choice": "net7.0",
+          "description": "Target net8.0"
+        }
+      ],
+      "replaces": "{net-framework}",
+      "defaultValue": "net7.0"
+    },
+    "DisableOpenAPI": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Disable OpenAPI (Swagger) support"
+    },
+    "EnableOpenAPI": {
+      "type": "computed",
+      "value": "(!DisableOpenAPI)"
+    },
+    "DisableTelemetry": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Disable OpenAPI (Swagger) support"
+    },
+    "EnableTelemetry": {
+      "type": "computed",
+      "value": "(!DisableOpenAPI)"
     },
     "ExcludeLaunchSettings": {
       "type": "parameter",
@@ -237,43 +287,6 @@
         "fallbackVariableName": "iisHttpsPortGenerated"
       },
       "replaces": "44300"
-    },
-    "Framework": {
-      "type": "parameter",
-      "description": "The target framework for the project.",
-      "datatype": "choice",
-      "choices": [
-        {
-          "choice": "net8.0",
-          "description": "Target net8.0"
-        },
-        {
-          "choice": "net7.0",
-          "description": "Target net8.0"
-        }
-      ],
-      "replaces": "{net-framework}",
-      "defaultValue": "net7.0"
-    },
-    "DisableOpenAPI": {
-      "type": "parameter",
-      "dataType": "bool",
-      "defaultValue": "false",
-      "description": "Disable OpenAPI (Swagger) support"
-    },
-    "EnableOpenAPI": {
-      "type": "computed",
-      "value": "(!DisableOpenAPI)"
-    },
-    "DisableTelemetry": {
-      "type": "parameter",
-      "dataType": "bool",
-      "defaultValue": "false",
-      "description": "Disable OpenAPI (Swagger) support"
-    },
-    "EnableTelemetry": {
-      "type": "computed",
-      "value": "(!DisableOpenAPI)"
     }
   },
   "primaryOutputs": [{ "path": "Skeleton.sln" }],
