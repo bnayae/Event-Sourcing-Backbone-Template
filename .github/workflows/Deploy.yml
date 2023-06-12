@@ -43,6 +43,9 @@ jobs:
         run: |
           dotnet new install .
 
+      - name: Show folder
+        run:  ls
+
       - name: Uninstall
         run: |
           dotnet new uninstall .
@@ -50,6 +53,6 @@ jobs:
         shell: bash
 
       - name: Push 
-        run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_PUBLISH }} -s https://api.nuget.org/v3/index.json --skip-duplicate 
+        run: dotnet nuget push Event-Sourcing.Backbone.Templates.*.nupkg -k ${{ secrets.NUGET_PUBLISH }} -s https://api.nuget.org/v3/index.json --skip-duplicate 
   
  
