@@ -32,7 +32,7 @@ jobs:
       - name: Build Setup (.NET)
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: net7.0
+          dotnet-version: 7.0.x
           include-prerelease: false
   
       - name: Pack
