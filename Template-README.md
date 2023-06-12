@@ -36,7 +36,11 @@ dotnet new evtsrc -uri event-demo --consumer-group main-consumer -n MyCompany.Ev
 With s3 storage:  
 
 ```bash
+# Via AWS profile
 dotnet new evtsrc -uri event-demo-s3 -s3 --aws-profile AWS_PROFILE --aws-profile-region us-east-1 --s3-bucket event-sourcing-demo --consumer-group main-consumer -n MyCompany.Events.S3Storage -eb MyEvent
+
+# Via Environment Variables [`S3_EVENT_SOURCE_REGION`, `S3_EVENT_SOURCE_ACCESS_KEY` and `S3_EVENT_SOURCE_SECRET`]
+dotnet new evtsrc -uri event-demo-s3 -s3 -s3-cred environment-variable --s3-bucket event-sourcing-demo --consumer-group main-consumer -n MyCompany.Events.S3Storage -eb MyEvent
 ```
 
 Only Consumer:  
