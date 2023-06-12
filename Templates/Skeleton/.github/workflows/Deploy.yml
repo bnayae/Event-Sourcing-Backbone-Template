@@ -26,6 +26,6 @@ jobs:
       NUGET_PUBLISH: ${{ secrets.NUGET_PUBLISH }}
     with:
       build-config: Release
-      dotnet-version: {net-framework}
+      dotnet-version: {ci-net-framework}
       include-prerelease: false
  

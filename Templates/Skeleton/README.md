@@ -46,3 +46,10 @@ Only Producer:
 ```bash
 dotnet new evtsrc --no-consumer -uri event-demo -n MyCompany.Events.Producer -eb MyEvent
 ```  
+
+With GitHub Workflow (CI):  
+
+```bash
+dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events -eb MyEvent
+```  
+

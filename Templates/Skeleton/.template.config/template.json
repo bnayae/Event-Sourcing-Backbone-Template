@@ -109,17 +109,6 @@
       "defaultValue": "true",
       "description": "Remove the GitHub CI"
     },
-    "EnableGitHubCI": {
-      "type": "computed",
-      "value": "(!DisableGitHubCI)"
-    },
-    "EmailForCI": {
-      "type": "parameter",
-      "datatype": "string",
-      "replaces": "{ci-email}",
-      "defaultValue": "ci@github.com",
-      "description": "A valid email for the CI"
-    },
     "uri": {
       "type": "parameter",
       "datatype": "string",
@@ -160,6 +149,34 @@
       "defaultValue": "CHANGE_AWS_PROFILE_REGION",
       "replaces": "{AWS_PROFILE_REGION}",
       "description": "Set the AWS profile's region. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
+    },
+    "EnableGitHubCI": {
+      "type": "computed",
+      "value": "(!DisableGitHubCI)"
+    },
+    "EmailForCI": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "{ci-email}",
+      "defaultValue": "ci@github.com",
+      "description": "A valid email for the CI"
+    },
+    "FrameworkCI": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "8.0.x",
+          "description": "Target net8.0"
+        },
+        {
+          "choice": "7.0.x",
+          "description": "Target net8.0"
+        }
+      ],
+      "replaces": "{ci-net-framework}",
+      "defaultValue": "7.0.x"
     },
     "Framework": {
       "type": "parameter",
