@@ -39,6 +39,16 @@ jobs:
         run: dotnet pack -c Release --force -o . 
         shell: bash
 
+      - name: Install
+        run: |
+          dotnet new install .
+
+      - name: Uninstall
+        run: |
+          dotnet new uninstall .
+
+        shell: bash
+
       - name: Push 
         run: dotnet nuget push ./*.nupkg -k ${{ secrets.NUGET_PUBLISH }} -s https://api.nuget.org/v3/index.json --skip-duplicate 
   
