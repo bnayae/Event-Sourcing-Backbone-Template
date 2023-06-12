@@ -15,12 +15,14 @@
 ```bash
 # dotnet build --force
 dotnet pack -c Release --force -o .
-dotnet new install . 
+# dotnet new install . 
+dotnet new install Event-Sourcing.Backbone.Templates
 dotnet new evtsrc -h
 dotnet new evtsrc -n {name-of-the-project}
 dotnet new evtsrc -minimal -n {name-of-the-project}
 # dotnet new uninstall {groupIdentity}
-dotnet new uninstall .
+# dotnet new uninstall .
+dotnet new uninstall Event-Sourcing.Backbone.Templates
 ```
 
 ## CLI
@@ -48,3 +50,10 @@ Only Producer:
 ```bash
 dotnet new evtsrc --no-consumer -uri event-demo -n MyCompany.Events.Producer -eb MyEvent
 ```  
+
+With GitHub Workflow (CI):  
+
+```bash
+dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events -eb MyEvent
+```  
+
