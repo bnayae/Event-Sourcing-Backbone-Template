@@ -18,10 +18,6 @@
       "longName": "no-consumer",
       "shortName": "nc"
     },
-    "DisableGitHubCI": {
-      "longName": "no-github-ci",
-      "shortName": "nghci"
-    },
     "Framework": {
       "longName": "framework",
       "shortName": "f"
@@ -78,6 +74,12 @@
       "isHidden": true
     },
     "kestrelHttpsPort": {
+      "isHidden": true
+    },
+    "iisHttpPort": {
+      "isHidden": true
+    },
+    "iisHttpsPort": {
       "isHidden": true
     }
   },

@@ -118,7 +118,7 @@
       "persistenceScope": "templateGroup"
     },
     {
-      "id": "DisableGitHubCI",
+      "id": "EnableGitHubCI",
       "name": {
         "text": "Enable GitHub CI",
         "overrideDefaultText": true
@@ -127,7 +127,6 @@
         "text": "Use .github folder with CI definitions",
         "overrideDefaultText": true
       },
-      "invertBoolean": true,
       "isVisible": true,
       "defaultValue": "true",
       "persistenceScope": "templateGroup"

@@ -104,10 +104,14 @@
       "value": "(!DisableConsumer)"
     },
     "DisableGitHubCI": {
+      "type": "computed",
+      "value": "(!EnableGitHubCI)"
+    },
+    "EnableGitHubCI": {
       "type": "parameter",
       "dataType": "bool",
-      "defaultValue": "true",
-      "description": "Remove the GitHub CI"
+      "defaultValue": "false",
+      "description": "Set-up GitHub workflow (CI)"
     },
     "uri": {
       "type": "parameter",
@@ -149,10 +153,6 @@
       "defaultValue": "CHANGE_AWS_PROFILE_REGION",
       "replaces": "{AWS_PROFILE_REGION}",
       "description": "Set the AWS profile's region. see: https://medium.com/r/?url=https%3A%2F%2Fcodewithmukesh.com%2Fblog%2Faws-credentials-for-dotnet-applications%2F"
-    },
-    "EnableGitHubCI": {
-      "type": "computed",
-      "value": "(!DisableGitHubCI)"
     },
     "EmailForCI": {
       "type": "parameter",
