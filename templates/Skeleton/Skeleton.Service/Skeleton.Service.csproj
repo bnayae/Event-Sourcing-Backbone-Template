@@ -15,7 +15,6 @@
 	<!--#if (s3) -->
 	<!-- s3 -->
 	<ItemGroup>
-	  <PackageReference Include="AWSSDK.S3" Version="3.7.104.29" />
 	  <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.7" />
 	</ItemGroup>
 	<!--#endif -->
@@ -24,6 +23,11 @@
 	<!-- producer -->
 	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.RedisProducerProvider" Version="{nuget-version}" />
+	</ItemGroup>
+	<!--#endif -->
+	
+	<!--#if (EnableProducer && s3) -->
+	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreProducerProvider" Version="{nuget-version}" />
 	</ItemGroup>
 	<!--#endif -->
@@ -32,6 +36,11 @@
 	<!-- consumer -->
 	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.RedisConsumerProvider" Version="{nuget-version}" />
+	</ItemGroup>
+	<!--#endif -->
+
+	<!--#if (EnableConsumer && s3) -->
+	<ItemGroup>
 		<PackageReference Include="EventSourcing.Backbone.Channels.S3StoreConsumerProvider" Version="{nuget-version}" />
 	</ItemGroup>
 	<!--#endif -->

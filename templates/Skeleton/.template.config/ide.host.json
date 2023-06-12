@@ -128,7 +128,7 @@
         "overrideDefaultText": true
       },
       "isVisible": true,
-      "defaultValue": "true",
+      "defaultValue": "false",
       "persistenceScope": "templateGroup"
     },
     {
