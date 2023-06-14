@@ -20,25 +20,22 @@ services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 services.AddAWSService<IAmazonS3>();
 #endif
 
-IWebHostEnvironment environment = builder.Environment;
-string env = environment.EnvironmentName;
-
 #if (EnableTelemetry)
-services.AddOpenTelemetryForEventSourcing(environment);
+builder.AddOpenTelemetryEventSourcing();
 #endif
 
 services.AddEventSourceRedisConnection();
 #if (EnableProducer && s3 )
-services.AddKeyedProductCycleProducer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET, env);
+builder.AddKeyedProductCycleProducer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET);
 #endif
 #if (EnableProducer && !s3 )
-services.AddKeyedProductCycleProducer(ProductCycleConstants.URI, env);
+builder.AddKeyedProductCycleProducer(ProductCycleConstants.URI);
 #endif
 #if (EnableConsumer && s3)
-services.AddKeyedConsumer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET, env);
+builder.AddKeyedConsumer(ProductCycleConstants.URI, ProductCycleConstants.S3_BUCKET);
 #endif
 #if (EnableConsumer && !s3)
-services.AddKeyedConsumer(ProductCycleConstants.URI, env);
+builder.AddKeyedConsumer(ProductCycleConstants.URI);
 #endif
 
 #if (EnableConsumer)
@@ -72,6 +69,10 @@ builder.Services.AddSwaggerGen(
 
 var app = builder.Build();
 
+#if (EnableTelemetry && prometheus)
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+#endif
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -96,6 +97,6 @@ switches.Add("Consumer");
 #if (s3)
 switches.Add("S3 Storage [Bucket:{CHANGE_THE_BUCKET}, Profile:{AWS_PROFILE}, Region:{AWS_PROFILE_REGION}]");
 #endif
-logger.LogInformation("Service Configuration Event Sourcing `{event-bundle}` on URI: `{URI}`, Features: [{features}]", "ProductCycle", ProductCycleConstants.URI, string.Join(", ", switches));
+logger?.LogInformation("Service Configuration Event Sourcing `{event-bundle}` on URI: `{URI}`, Features: [{features}]", "ProductCycle", ProductCycleConstants.URI, string.Join(", ", switches));
     
 app.Run();

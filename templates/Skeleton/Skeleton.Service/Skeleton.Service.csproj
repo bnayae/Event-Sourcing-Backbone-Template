@@ -57,6 +57,13 @@
 	</ItemGroup>
 	<!--#endif -->
 
+	<!--#if (EnableTelemetry && prometheus) -->
+	<!-- prometheus -->
+	<ItemGroup>
+		<PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.5.0-rc.1" />
+	</ItemGroup>
+	<!--#endif -->
+
 	<ItemGroup>
 	  <ProjectReference Include="..\Skeleton.Abstractions\Skeleton.Abstractions.csproj" />
 	</ItemGroup>

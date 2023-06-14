@@ -35,6 +35,10 @@
       "longName": "uri",
       "shortName": "uri"
     },
+    "prometheus": {
+      "longName": "prometheus",
+      "shortName": "prom"
+    },
     "s3": {
       "longName": "s3-storage",
       "shortName": "s3"

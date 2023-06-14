@@ -64,6 +64,12 @@
           "exclude": [
             ".github/**.*"
           ]
+        },
+        {
+          "condition": "(DisableTelemetry)",
+          "exclude": [
+            "Skeleton.Service/Extensions/OpenTelemetryExtensions.cs"
+          ]
         }
       ]
     }
@@ -80,7 +86,7 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "{nuget-version}",
-      "defaultValue": "1.2.115",
+      "defaultValue": "1.2.118",
       "description": "The NuGet version of the EventSOurcing.Backbone"
     },
     "DisableProducer": {
@@ -230,6 +236,12 @@
     "EnableTelemetry": {
       "type": "computed",
       "value": "(!DisableOpenAPI)"
+    },
+    "prometheus": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Use prometheus exporter for Open Telemetry's metrics."
     },
     "ExcludeLaunchSettings": {
       "type": "parameter",
