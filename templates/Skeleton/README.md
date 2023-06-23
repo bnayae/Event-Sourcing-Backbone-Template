@@ -1,24 +1,41 @@
-[![NuGet](https://img.shields.io/nuget/v/??.svg)](https://www.nuget.org/packages/??/) 
+[![NuGet](https://img.shields.io/nuget/v/Skeleton.svg)](https://www.nuget.org/packages/Skeleton/) 
 
 ## Get started 
 
-### Docker
 
-Run the following dockers.
+### Docker Compose
 
-- Redis
+Set-up the environment with docker-compose 
 
 ```bash
-docker run -p 6379:6379 -it --rm --name redis-Json redislabs/rejson:latest
+cd .dockers/compose
 ```
 
 ```bash
-docker run --name jaeger-otel  --rm -it -e COLLECTOR_OTLP_ENABLED=true -p 16686:16686 -p 4317:4317 -p 4318:4318  jaegertracing/all-in-one:latest
+docker compose up -d
 ```
 
-Browse to:
+Stop the environment
+
+```bash
+
+docker compose down
+```
+
+For Jaeger (tracing) Browse to:
 ```bash
 http://localhost:16686/search
+```
+
+For Grafana (metrics) Browse to:
+```bash
+http://localhost:3000
+
+# Credentials sets in the `compose.yaml` file
+# defaults are:
+#   user admin
+#   password: grafana
+
 ```
 
 ### CLI
@@ -53,3 +70,53 @@ With GitHub Workflow (CI):
 dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events -eb MyEvent
 ```  
 
+## Open Telemetry Snippets
+
+Enrich / Telemetry events
+
+```cs
+var activity = Activity.Current;
+activity?.SetTag("app.user.id", request.UserId);
+activity?.AddEvent(new("Fetch cart"));
+```
+
+### Ceating new custom trace / meter 
+
+Make sure to add the `ServiceName` to the `OpenTelemetryExtensions` registration
+
+```cs 
+public static class DiagnosticsConfig
+{
+    public const string ServiceName = "MyService";
+    public static ActivitySource ActivitySource = new ActivitySource(ServiceName);
+
+    public static Meter Meter = new(ServiceName);
+    public static Counter<long> RequestCounter =
+        Meter.CreateCounter<long>("app.request_counter");
+}
+```
+
+Use it 
+
+- [Manual Instrumentation](https://opentelemetry.io/docs/instrumentation/net/getting-started/#manual-instrumentation)
+- [Manual Metrics](https://opentelemetry.io/docs/instrumentation/net/getting-started/#manual-metrics)
+
+```cs
+public IActionResult Index()
+{
+    // Track work inside of the request
+    using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello");
+    activity?.SetTag("foo", 1);
+    activity?.SetTag("bar", "Hello, World!");
+    activity?.SetTag("baz", new int[] { 1, 2, 3 });
+
+    DiagnosticsConfig.RequestCounter
+        .WithTag("Action", nameof(Index))
+        .WithTag("Controller", nameof(HomeController))
+        .Add(1);
+    
+    return View();
+}
+```
+
+*/
