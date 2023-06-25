@@ -55,6 +55,10 @@
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.5.0-beta.1" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.0-beta.1" />
 	</ItemGroup>
+	<!-- open-telemetry redis -->
+	<ItemGroup>
+		<PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc9.10" />
+	</ItemGroup>
 	<!--#endif -->
 
 	<!--#if (EnableTelemetry && prometheus) -->
