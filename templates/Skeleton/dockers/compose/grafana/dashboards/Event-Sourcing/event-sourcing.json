@@ -159,6 +159,7 @@
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
       },
+      "description": "Meter before each event consumption ",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -212,8 +213,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 11,
+        "h": 9,
+        "w": 12,
         "x": 0,
         "y": 4
       },
@@ -222,7 +223,7 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom",
+          "placement": "right",
           "showLegend": true
         },
         "tooltip": {
@@ -237,13 +238,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "builder",
-          "expr": "event_source_consumer_batch_events_count",
+          "expr": "evt_src_sys_consumer_events_operation_count",
           "instant": false,
+          "legendFormat": "{{env}}:{{uri}}:{{operation}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Events",
+      "title": "Events Consumption",
       "type": "timeseries"
     }
   ],
@@ -255,7 +257,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
