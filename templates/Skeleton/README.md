@@ -2,7 +2,6 @@
 
 ## Get started 
 
-
 ### Docker Compose
 
 Set-up the environment with docker-compose 

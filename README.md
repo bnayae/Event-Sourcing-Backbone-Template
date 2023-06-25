@@ -2,7 +2,28 @@
 
 ### CLI
 
-Minimal:
+Install the template:
+
+```bash
+dotnet new install Event-Sourcing.Backbone.Templates
+```
+
+Create new:
+
+```bash
+dotnet new evtsrc -h
+dotnet new evtsrc -n {name-of-the-project}
+```
+
+Uninstall the template:
+
+```bash
+dotnet new uninstall Event-Sourcing.Backbone.Templates
+```
+
+#### Samples
+
+Basic setting (Redis only):
 
 ```bash
 dotnet new evtsrc -uri event-demo --consumer-group main-consumer -n MyCompany.Events -eb MyEvent
