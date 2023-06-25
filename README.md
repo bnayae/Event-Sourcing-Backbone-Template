@@ -1,24 +1,5 @@
 ## Get started 
 
-### Docker
-
-Run the following dockers.
-
-- Redis
-
-```bash
-docker run -p 6379:6379 -it --rm --name redis-Json redislabs/rejson:latest
-```
-
-```bash
-docker run --name jaeger-otel  --rm -it -e COLLECTOR_OTLP_ENABLED=true -p 16686:16686 -p 4317:4317 -p 4318:4318  jaegertracing/all-in-one:latest
-```
-
-Browse to:
-```bash
-http://localhost:16686/search
-```
-
 ### CLI
 
 Minimal:

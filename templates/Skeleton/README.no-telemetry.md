@@ -22,27 +22,6 @@ Stop the environment
 docker compose down
 ```
 
-#### Jaeger 
-
-For Jaeger (tracing) [Browse to](http://localhost:16686/search):
-```bash
-http://localhost:16686/search
-```
-
-#### Grafana 
-
-For Grafana (metrics) [Browse to](http://localhost:3000/)::
-```bash
-http://localhost:3000
-
-# Credentials sets in the `compose.yaml` file
-# Defaults are:
-#   user admin
-#   password: grafana
-
-# Goto the Event Sourcing dashboard
-```
-
 ### CLI
 
 Minimal:
@@ -74,10 +53,3 @@ With GitHub Workflow (CI):
 ```bash
 dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events -eb MyEvent
 ```  
-
-## Open Telemetry
-
-Read more:
-
-- [Manual Instrumentation](https://opentelemetry.io/docs/instrumentation/net/getting-started/#manual-instrumentation)
-- [Manual Metrics](https://opentelemetry.io/docs/instrumentation/net/getting-started/#manual-metrics)

@@ -3,7 +3,6 @@ using Skeleton.Abstractions;
 
 // Configuration: https://medium.com/@gparlakov/the-confusion-of-asp-net-configuration-with-environment-variables-c06c545ef732
 
-
 namespace Skeleton;
 
 /// <summary>
@@ -14,22 +13,24 @@ public static class ProductCycleProducerExtensions
     /// <summary>
     /// Register a producer.
     /// </summary>
-    /// <param name="services">The services.</param>
+    /// <param name="builder">The builder.</param>
     /// <param name="uri">The URI.</param>
     #if (s3)
     /// <param name="s3Bucket">The s3 bucket.</param>
     #endif
-    /// <param name="env">The environment.</param>
     /// <returns></returns>
-    public static IServiceCollection AddProductCycleProducer
-        (
-        this IServiceCollection services,
-        string uri,
-        #if (s3)
-        string s3Bucket,
-        #endif
-        Env env)
+    public static WebApplicationBuilder AddProductCycleProducer (
+            this WebApplicationBuilder builder,
+            string uri
+            #if (s3)
+            , string s3Bucket
+            #endif
+            )
     {
+        IServiceCollection services = builder.Services;
+        IWebHostEnvironment environment = builder.Environment;
+        string env = environment.EnvironmentName;
+
         #if (s3)
         var s3Options = new S3Options { Bucket = s3Bucket };
         #endif
@@ -42,29 +43,31 @@ public static class ProductCycleProducerExtensions
                                 );
         });
 
-        return services;
+        return builder;
     }
 
     /// <summary>
     /// Register a producer when the URI of the service used as the registration's key.
     /// See: https://medium.com/weknow-network/keyed-dependency-injection-using-net-630bd73d3672.
     /// </summary>
-    /// <param name="services">The services.</param>
+    /// <param name="builder">The builder.</param>
     /// <param name="uri">The URI.</param>
     #if (s3)
     /// <param name="s3Bucket">The s3 bucket.</param>
     #endif
-    /// <param name="env">The environment.</param>
     /// <returns></returns>
-    public static IServiceCollection AddKeyedProductCycleProducer
-        (
-        this IServiceCollection services,
-        string uri,
-        #if (s3)
-        string s3Bucket,
-        #endif
-        Env env)
+    public static WebApplicationBuilder AddKeyedProductCycleProducer (
+                this WebApplicationBuilder builder,
+                string uri
+                #if (s3)
+                , string s3Bucket,
+                #endif
+                )
     {
+        IServiceCollection services = builder.Services;
+        IWebHostEnvironment environment = builder.Environment;
+        string env = environment.EnvironmentName;
+        
         #if (s3)
         var s3Options = new S3Options { Bucket = s3Bucket };
         #endif
@@ -77,7 +80,7 @@ public static class ProductCycleProducerExtensions
             );
         }, uri);
 
-        return services;
+        return builder;
     }
 
     private static IProductCycleProducer BuildProducer(string uri, Env env, IServiceProvider ioc
