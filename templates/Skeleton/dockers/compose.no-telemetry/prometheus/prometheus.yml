@@ -13,7 +13,7 @@ alerting:
     timeout: 10s
     api_version: v1
 scrape_configs:
-- job_name: ProductCycle
+- job_name: EventBundle
   honor_timestamps: true
   # scrape_interval: 15s
   # scrape_timeout: 15s
@@ -23,7 +23,14 @@ scrape_configs:
   - targets:
     - host.docker.internal:5000 # when prometheus is hosting within a docker container
     - localhost:5000            # when prometheus is hosting on localhost
-# - job_name: the-job-name
+- job_name: Demo
+  honor_timestamps: true
+  scheme: http
+  static_configs:
+  - targets:
+    - host.docker.internal:4999
+    - host.docker.internal:5280
+# - job_name: prometheus
 #   honor_timestamps: true
 #   scrape_interval: 15s
 #   scrape_timeout: 10s

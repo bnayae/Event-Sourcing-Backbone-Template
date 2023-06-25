@@ -27,10 +27,10 @@ services:
     image: jaegertracing/opentelemetry-all-in-one
     ...
     ports:
+      - 13133:13133
       - 16686:16686
-      - 4318:4318
-      - 4317:4317
-prometheus:
+      - 55680:55680
+  prometheus:
     image: prom/prometheus
     ...
     ports:
