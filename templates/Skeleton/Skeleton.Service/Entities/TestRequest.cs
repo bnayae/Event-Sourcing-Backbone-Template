@@ -2,4 +2,4 @@
 
 namespace Skeleton.Service.Entities;
 
-public record Test(Id id, params string[] notes);
+public record TestRequest(Id id, params string[] notes);

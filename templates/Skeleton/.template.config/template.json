@@ -68,7 +68,20 @@
         {
           "condition": "(DisableTelemetry)",
           "exclude": [
-            "Skeleton.Service/Extensions/OpenTelemetryExtensions.cs"
+            "Skeleton.Service/Extensions/OpenTelemetryExtensions.cs",
+            "dockers/compose/**.*",
+            "README.md"
+          ],
+          "rename": {
+            "README.no-telemetry.md": "README.md",
+            "dockers/compose.no-telemetry": "dockers/compose"
+          }
+        },
+        {
+          "condition": "(EnableTelemetry)",
+          "exclude": [
+            "dockers/compose.no-telemetry/**.*",
+            "README.no-telemetry.md"
           ]
         }
       ]
@@ -86,7 +99,7 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "{nuget-version}",
-      "defaultValue": "1.2.118",
+      "defaultValue": "1.2.121",
       "description": "The NuGet version of the EventSOurcing.Backbone"
     },
     "DisableProducer": {
@@ -235,7 +248,7 @@
     },
     "EnableTelemetry": {
       "type": "computed",
-      "value": "(!DisableOpenAPI)"
+      "value": "(!DisableTelemetry)"
     },
     "prometheus": {
       "type": "parameter",

@@ -94,7 +94,7 @@ public class ProductCycleProducerController : ControllerBase
     /// <returns></returns>
     [HttpPost("test")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<string> TestAsync([FromBody] Test payload)
+    public async Task<string> TestAsync([FromBody] TestRequest payload)
     {
         var (id_, notes) = payload;
         var (id, version) = id_;

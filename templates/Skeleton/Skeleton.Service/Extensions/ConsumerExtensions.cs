@@ -107,7 +107,6 @@ public static class ConsumerExtensions
                         #endif
                         .WithOptions(o => o with
                         {
-                            TraceAsParent = TimeSpan.FromMinutes(10),
                             OriginFilter = MessageOrigin.Original,
                             AckBehavior = AckBehavior.OnSucceed
                         })
