@@ -52,6 +52,7 @@ jobs:
         run: |
           cd $Home 
           dotnet new evtsrc -uri testing -cg main -n Comp.Events -e Test
+          cd ./Comp.Events
         shell: bash
 
       - name: test
