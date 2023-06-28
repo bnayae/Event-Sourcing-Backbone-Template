@@ -48,16 +48,16 @@ internal static class OpenTelemetryExtensions
                                 })
                                 .AddGrpcClientInstrumentation()
                                 .AddOtlpExporter();
-                            if (environment.IsDevelopment())
-                                cfg.AddConsoleExporter();
+                            // if (environment.IsDevelopment())
+                            //    cfg.AddConsoleExporter();
                         })
                 .WithEventSourcingMetrics(environment, cfg =>
                 {
                     cfg.AddAspNetCoreInstrumentation( /* m => m.Filter = filter */)
                         .AddOtlpExporter()
                         .AddPrometheusExporter();
-                    if (environment.IsDevelopment())
-                        cfg.AddConsoleExporter();
+                    // if (environment.IsDevelopment())
+                    //    cfg.AddConsoleExporter();
                 });
 
         return services;
