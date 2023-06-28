@@ -55,8 +55,14 @@ jobs:
 
       - name: test
         run: |
-          cd .\Comp.Events
+          cd ./Comp.Events
           dotnet test --filter test-type=unit
+        shell: bash
+
+      - name: test
+        run: |
+          cd ..
+          rm -rf Comp.Events
         shell: bash
 
       - name: Uninstall
