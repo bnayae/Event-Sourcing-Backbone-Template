@@ -27,8 +27,8 @@
 	</ItemGroup>
 	
   <ItemGroup>
-    <ProjectReference Include="..\..\MyCompany.Events.Abstractions\MyCompany.Events.Abstractions.csproj" />
-    <ProjectReference Include="..\..\MyCompany.Events.Service\MyCompany.Events.Service.csproj" />
+    <ProjectReference Include="..\..\Skeleton.Abstractions\Skeleton.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Skeleton.Service\Skeleton.Service.csproj" />
   </ItemGroup>
 
 </Project>

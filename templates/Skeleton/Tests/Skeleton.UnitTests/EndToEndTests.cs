@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 using Xunit;
 using Xunit.Abstractions;
-using MyCompany.Events.Abstractions;
+using Skeleton.Abstractions;
 using System;
 
 #pragma warning disable HAA0301 // Closure Allocation Source

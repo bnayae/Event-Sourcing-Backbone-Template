@@ -61,11 +61,11 @@ jobs:
       - name: test
         run: |
           cd $Home 
-          ls
           echo ======== HOME =======
-          cd ./Comp.Events
           ls
-          echo ======== HComp.EventsOME =======
+          cd ./Comp.Events
+          echo ======== Comp.EventsOME =======
+          ls
           dotnet test --filter test-type=unit
         shell: bash
 

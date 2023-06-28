@@ -4,7 +4,7 @@ using FakeItEasy;
 
 using Microsoft.Extensions.Logging;
 
-using MyCompany.Events.Abstractions;
+using Skeleton.Abstractions;
 
 using StackExchange.Redis;
 
