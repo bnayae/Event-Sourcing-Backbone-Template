@@ -50,19 +50,20 @@ jobs:
 
       - name: cli
         run: |
+          cd /
           dotnet new evtsrc -uri testing -cg main -n Comp.Events -e Test
         shell: bash
 
       - name: test
         run: |
-          cd ./Comp.Events
-          dotnet test --filter test-type=unit
           ls
+          cd /Comp.Events
+          dotnet test --filter test-type=unit
         shell: bash
 
       - name: test
         run: |
-          cd ..
+          cd /
           rm -rf Comp.Events
         shell: bash
 
