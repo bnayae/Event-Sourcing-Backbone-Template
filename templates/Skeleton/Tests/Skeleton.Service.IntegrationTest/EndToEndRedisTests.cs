@@ -16,10 +16,8 @@ using Xunit.Abstractions;
 
 namespace Skeleton.Service.IntegrationTest;
 
-/// <summary>
-/// The end to end explicit tests.
-/// </summary>
-public class EndToEndExplicitTests : IDisposable
+[Trait("test-type", "integration")]
+public class EndToEndRedisTests : IDisposable
 {
     private readonly ITestOutputHelper _outputHelper;
     private readonly IProductCycleConsumer _subscriber = A.Fake<IProductCycleConsumer>();

@@ -17,6 +17,7 @@ using System;
 
 namespace Skeleton.Service.UnitTests;
 
+[Trait("test-type", "unit")]
 public class EndToEndTests
 {
     private readonly ITestOutputHelper _outputHelper;

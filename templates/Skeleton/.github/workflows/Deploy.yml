@@ -28,4 +28,5 @@ jobs:
       build-config: Release
       dotnet-version: {ci-net-framework}
       include-prerelease: false
+      test-switch: --filter test-type=unit
  
