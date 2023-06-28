@@ -57,11 +57,11 @@ jobs:
       - name: test
         run: |
           ls
-          cd $Home/Comp.Events
+          cd ./Comp.Events
           dotnet test --filter test-type=unit
         shell: bash
 
-      - name: test
+      - name: cleanup
         run: |
           cd $Home 
           rm -rf Comp.Events
