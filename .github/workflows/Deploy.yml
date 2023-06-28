@@ -57,6 +57,7 @@ jobs:
         run: |
           cd ./Comp.Events
           dotnet test --filter test-type=unit
+          ls
         shell: bash
 
       - name: test

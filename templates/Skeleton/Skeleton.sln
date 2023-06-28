@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skeleton.Service", "Skeleto
 EndProject
 Project("{9A19103F-1111-1111-BE54-9A1E7A4F7556}") = "Skeleton.Abstractions", "Skeleton.Abstractions\Skeleton.Abstractions.csproj", "{9A19103F-1111-1111-BE54-9A1E7A4F7556}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D8D7E11F-8285-4C7F-BA3B-2821A76678DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyComapy.Events.UnitTests", "..\MyCompany.Events\Tests\MyComapy.Events.UnitTests\MyComapy.Events.UnitTests.csproj", "{8203A571-4D4C-4621-8971-DB17F84C76F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyComapy.Events.IntegrationTest", "..\MyCompany.Events\Tests\MyComapy.Events.IntegrationTest\MyComapy.Events.IntegrationTest.csproj", "{D99A8E71-9A1A-468E-9903-784C739BEC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +27,22 @@ Global
 		{9A19103F-1111-1111-BE54-9A1E7A4F7556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A19103F-1111-1111-BE54-9A1E7A4F7556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A19103F-1111-1111-BE54-9A1E7A4F7556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8203A571-4D4C-4621-8971-DB17F84C76F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8203A571-4D4C-4621-8971-DB17F84C76F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8203A571-4D4C-4621-8971-DB17F84C76F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8203A571-4D4C-4621-8971-DB17F84C76F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99A8E71-9A1A-468E-9903-784C739BEC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99A8E71-9A1A-468E-9903-784C739BEC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99A8E71-9A1A-468E-9903-784C739BEC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99A8E71-9A1A-468E-9903-784C739BEC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13E9BBCC-8E0F-4BCB-B03C-CB345B44BD08}
+	EndGlobalSection
+		{8203A571-4D4C-4621-8971-DB17F84C76F3} = {D8D7E11F-8285-4C7F-BA3B-2821A76678DB}
+		{D99A8E71-9A1A-468E-9903-784C739BEC8F} = {D8D7E11F-8285-4C7F-BA3B-2821A76678DB}
 	EndGlobalSection
 EndGlobal
