@@ -18,7 +18,7 @@ using System;
 namespace Skeleton.Service.UnitTests;
 
 [Trait("test-type", "unit")]
-public class EndToEndTests
+public sealed class EndToEndTests
 {
     private readonly ITestOutputHelper _outputHelper;
     private readonly IProductCycleConsumer _subscriber = A.Fake<IProductCycleConsumer>();

@@ -17,7 +17,7 @@ using Xunit.Abstractions;
 namespace Skeleton.Service.IntegrationTest;
 
 [Trait("test-type", "integration")]
-public class EndToEndRedisTests : IDisposable
+public sealed class EndToEndRedisTests : IDisposable
 {
     private readonly ITestOutputHelper _outputHelper;
     private readonly IProductCycleConsumer _subscriber = A.Fake<IProductCycleConsumer>();
@@ -32,10 +32,10 @@ public class EndToEndRedisTests : IDisposable
     #region Ctor
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EndToEndExplicitTests" /> class.
+    /// Initializes a new instance of the <see cref="EndToEndRedisTests" /> class.
     /// </summary>
     /// <param name="outputHelper">The output helper.</param>
-    public EndToEndExplicitTests(ITestOutputHelper outputHelper)
+    public EndToEndRedisTests(ITestOutputHelper outputHelper)
     {
         _outputHelper = outputHelper;
 
@@ -77,6 +77,10 @@ public class EndToEndRedisTests : IDisposable
     [Fact(Timeout = TIMEOUT)]
     public async Task OnSucceed_ACK_Test()
     {
+        _outputHelper.WriteLine("Don't forget to start the docker compose environment");
+        _outputHelper.WriteLine(@"  cd ./dockers/compose");
+        _outputHelper.WriteLine(@"  compose up -d");
+
         IProductCycleProducer producer = RedisProducerBuilder.Create()
                                         .Environment(ENV)
                                         .Uri(URI)
@@ -116,7 +120,7 @@ public class EndToEndRedisTests : IDisposable
 
     #region Dispose pattern
 
-    ~EndToEndExplicitTests()
+    ~EndToEndRedisTests()
     {
         Dispose();
     }

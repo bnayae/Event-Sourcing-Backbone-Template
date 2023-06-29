@@ -7,11 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skeleton.Service", "Skeleto
 EndProject
 Project("{9A19103F-1111-1111-BE54-9A1E7A4F7556}") = "Skeleton.Abstractions", "Skeleton.Abstractions\Skeleton.Abstractions.csproj", "{9A19103F-1111-1111-BE54-9A1E7A4F7556}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D8D7E11F-8285-4C7F-BA3B-2821A76678DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Skeleton.UnitTests", "..\Skeleton\Tests\Skeleton.UnitTests\Tests.Skeleton.UnitTests.csproj", "{8203A571-4D4C-4621-8971-DB17F84C76F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skeleton.UnitTests", "..\Skeleton\Tests\Skeleton.UnitTests\Skeleton.UnitTests.csproj", "{8203A571-4D4C-4621-8971-DB17F84C76F3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skeleton.IntegrationTest", "..\Skeleton\Tests\Skeleton.IntegrationTest\Skeleton.IntegrationTest.csproj", "{D99A8E71-9A1A-468E-9903-784C739BEC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Skeleton.IntegrationTests", "..\Skeleton\Tests\Skeleton.IntegrationTests\Tests.Skeleton.IntegrationTests.csproj", "{D99A8E71-9A1A-468E-9903-784C739BEC8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,8 +39,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13E9BBCC-8E0F-4BCB-B03C-CB345B44BD08}
-	EndGlobalSection
-		{8203A571-4D4C-4621-8971-DB17F84C76F3} = {D8D7E11F-8285-4C7F-BA3B-2821A76678DB}
-		{D99A8E71-9A1A-468E-9903-784C739BEC8F} = {D8D7E11F-8285-4C7F-BA3B-2821A76678DB}
 	EndGlobalSection
 EndGlobal

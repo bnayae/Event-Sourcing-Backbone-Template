@@ -44,14 +44,6 @@ jobs:
           dotnet new install .
         shell: bash
 
-      # - name: Show folder
-      #   run: |
-      #     ls
-      #     cd $Home
-      #     echo ======== HOME =======
-      #     ls     
-      #   shell: bash
-
       - name: cli
         run: |
           cd $Home 
@@ -61,11 +53,7 @@ jobs:
       - name: test
         run: |
           cd $Home 
-          echo ======== HOME =======
-          ls
           cd ./Comp.Events
-          echo ======== Comp.EventsOME =======
-          ls
           dotnet test --filter test-type=unit
         shell: bash
 
