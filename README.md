@@ -51,4 +51,46 @@ With GitHub Workflow (CI):
 
 ```bash
 dotnet new evtsrc -uri event-demo-ci --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events.CI -e MyEvent
-```  
+```
+
+## Dev Env Setup
+
+### Docker Compose 
+
+Set-up the environment with docker-compose 
+
+```bash
+cd ./dockers/compose
+```
+
+```bash
+docker compose up -d
+```
+
+Stop the environment
+
+```bash
+
+docker compose down
+```
+
+#### Jaeger 
+
+For Jaeger (tracing) [Browse to](http://localhost:16686/search):
+```bash
+http://localhost:16686/search
+```
+
+#### Grafana 
+
+For Grafana (metrics) [Browse to](http://localhost:3000/)::
+```bash
+http://localhost:3000
+
+# Credentials sets in the `compose.yaml` file
+# Defaults are:
+#   user admin
+#   password: grafana
+
+# Goto the Event Sourcing dashboard
+```
