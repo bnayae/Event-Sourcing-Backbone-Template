@@ -57,7 +57,7 @@ dotnet new evtsrc -uri event-demo-ci --consumer-group main-consumer --github-ci 
 
 ### Docker Compose 
 
-Set up the environment with docker-compose.
+Set up the environment with docker-compose.  
 Open terminal at the the solution folder
 
 ```bash
