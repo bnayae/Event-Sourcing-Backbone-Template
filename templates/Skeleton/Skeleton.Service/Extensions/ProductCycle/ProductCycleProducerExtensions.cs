@@ -60,7 +60,7 @@ public static class ProductCycleProducerExtensions
                 this WebApplicationBuilder builder,
                 string uri
                 #if (s3)
-                , string s3Bucket,
+                , string s3Bucket
                 #endif
                 )
     {
@@ -94,6 +94,8 @@ public static class ProductCycleProducerExtensions
                                 #if (s3)
                                 .ResolveS3Storage(s3Options)
                                 #endif
+                                // Expose debug leve telemetry
+                                // .WithOptions(o => o with { TelemetryLevel = LogLevel.Debug })
                                 .Environment(env)
                                 .Uri(uri)
                                 .WithLogger(logger)

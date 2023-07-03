@@ -108,7 +108,9 @@ public static class ConsumerExtensions
                         .WithOptions(o => o with
                         {
                             OriginFilter = MessageOrigin.Original,
-                            AckBehavior = AckBehavior.OnSucceed
+                            AckBehavior = AckBehavior.OnSucceed,
+                            // Expose debug leve telemetry
+                            // TelemetryLevel = LogLevel.Debug 
                         })
                         .Environment(env)
                         .Uri(uri);

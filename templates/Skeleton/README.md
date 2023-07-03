@@ -73,6 +73,13 @@ With GitHub Workflow (CI):
 ```bash
 dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --git-email ci-mail@gmail.com -n MyCompany.Events -e MyEvent
 ```  
+## Tune Telemetry
+
+- Show Redis Instrumentation
+
+  > Set the `EVENT_SOURCE_WITH_REDIS_TRACE` environment variable to `true`
+
+- Hide S3 Instrumentation (when using S3 provider)
 
 ## Open Telemetry
 

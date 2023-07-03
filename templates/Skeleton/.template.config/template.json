@@ -103,7 +103,7 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "{nuget-version}",
-      "defaultValue": "1.2.126",
+      "defaultValue": "1.2.133",
       "description": "The NuGet version of the EventSOurcing.Backbone"
     },
     "DisableProducer": {

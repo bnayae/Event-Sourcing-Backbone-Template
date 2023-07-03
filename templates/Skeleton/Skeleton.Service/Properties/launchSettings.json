@@ -5,7 +5,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EVENT_SOURCE_WITH_REDIS_TRACE": "false"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5000"
@@ -15,7 +16,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EVENT_SOURCE_WITH_REDIS_TRACE": "false"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
@@ -29,7 +31,8 @@
       "launchUrl": "ProductCycleProducerController",
       //#endif
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EVENT_SOURCE_WITH_REDIS_TRACE": "false"
       }
     },
     "Docker": {
