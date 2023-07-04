@@ -54,6 +54,9 @@ internal static class OpenTelemetryExtensions
                                     };
                                 })
                                 .AddGrpcClientInstrumentation()
+                                // To reduce tracing rate (performance reason) take enable custom tracing (
+                                // DO NOT USE IT WITHOUT INSPECTION OF THE `TraceSampler` CODE!
+                                //.SetSampler<TraceSampler>()
                                 .AddOtlpExporter();
                             // if (environment.IsDevelopment())
                             //    cfg.AddConsoleExporter();
