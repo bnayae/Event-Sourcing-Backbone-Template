@@ -64,10 +64,14 @@ builder.Services.AddSwaggerGen(
         {
             Version = "v1",
             Title = "Environment setup",
-            Description = @"<p><b>Use the following docker in order to setup the environment</b></p>
-<p>docker run -p 6379:6379 -it --rm --name redis-Json redislabs/rejson:latest</p>
-<p>docker run --name jaeger-otel  --rm -it -e COLLECTOR_OTLP_ENABLED=true -p 16686:16686 -p 4317:4317 -p 4318:4318  jaegertracing/all-in-one:latest</p>
-",
+            Description = 
+            """
+            Check the ReadMe for setting up developer environment.
+            cd ./dockers/compose
+            docker compose up -d
+            Jaeger:  http://localhost:16686/search
+            Grafana: http://localhost:3000
+            """,
         });
     }); 
 
