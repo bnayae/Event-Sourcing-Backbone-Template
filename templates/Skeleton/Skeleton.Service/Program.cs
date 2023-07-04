@@ -5,6 +5,7 @@ using Skeleton;
 using Skeleton.Abstractions;
 using Skeleton.Controllers;
 using Microsoft.OpenApi.Models;
+using EventSourcing.Backbone;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ services.AddAWSService<IAmazonS3>();
 
 #if (EnableTelemetry)
 builder.AddOpenTelemetryEventSourcing();
+// Tune telemetry level
+services.AddSingleton<TelemetryLevel>(LogLevel.Information);
+// services.AddSingleton(new TelemetryLevel { Metric = LogLevel.Information, Trace = LogLevel.Debug });
 #endif
 
 services.AddEventSourceRedisConnection();

@@ -94,8 +94,6 @@ public static class ProductCycleProducerExtensions
                                 #if (s3)
                                 .ResolveS3Storage(s3Options)
                                 #endif
-                                // Expose debug leve telemetry
-                                // .WithOptions(o => o with { TelemetryLevel = LogLevel.Debug })
                                 .Environment(env)
                                 .Uri(uri)
                                 .WithLogger(logger)

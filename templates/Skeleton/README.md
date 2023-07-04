@@ -79,7 +79,13 @@ dotnet new evtsrc -uri event-demo --consumer-group main-consumer --github-ci --g
 
   > Set the `EVENT_SOURCE_WITH_REDIS_TRACE` environment variable to `true`
 
-- Hide S3 Instrumentation (when using S3 provider)
+- Tune telemetry level
+
+```cs
+services.TryAddSingleton<TelemetryLevel>(LogLevel.Information);
+// or
+services.TryAddSingleton(new TelemetryLevel { Metric = LogLevel.Information, Trace = LogLevel.Debug });
+```
 
 ## Open Telemetry
 
