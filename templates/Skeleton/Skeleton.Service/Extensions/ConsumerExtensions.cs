@@ -31,7 +31,7 @@ public static class ConsumerExtensions
         string env = environment.EnvironmentName;
 
         #if (s3)
-        var s3Options = new S3Options { Bucket = s3Bucket };
+        var s3Options = new S3ConsumerOptions { Bucket = s3Bucket };
         #endif
         services.AddSingleton(ioc =>
         {
@@ -68,7 +68,7 @@ public static class ConsumerExtensions
         string env = environment.EnvironmentName;
 
         #if (s3)
-        var s3Options = new S3Options { Bucket = s3Bucket };
+        var s3Options = new S3ConsumerOptions { Bucket = s3Bucket };
         #endif
         services.AddKeyedSingleton(ioc =>
         {
@@ -97,7 +97,7 @@ public static class ConsumerExtensions
     private static IConsumerReadyBuilder BuildConsumer(string uri
                                                         , Env env, IServiceProvider ioc
                                                         #if (s3)
-                                                        , S3Options s3Options
+                                                        , S3ConsumerOptions s3Options
                                                         #endif
                                                         )
     {

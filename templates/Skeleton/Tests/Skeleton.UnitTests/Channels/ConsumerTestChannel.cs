@@ -40,7 +40,7 @@ public class ConsumerTestChannel : IConsumerChannelProvider
             try
             {
                 var announcement = await _channel.Reader.ReadAsync(cancellationToken);
-                foreach (var strategy in await plan.StorageStrategiesAsync)
+                foreach (var strategy in plan.StorageStrategies)
                 {
                     await strategy.LoadBucketAsync(announcement.Metadata, Bucket.Empty, EventBucketCategories.Segments, m => string.Empty);
                     await strategy.LoadBucketAsync(announcement.Metadata, Bucket.Empty, EventBucketCategories.Interceptions, m => string.Empty);

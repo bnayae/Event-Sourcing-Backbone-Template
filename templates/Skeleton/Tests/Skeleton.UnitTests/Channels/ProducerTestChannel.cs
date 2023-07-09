@@ -35,16 +35,15 @@ public class ProducerTestChannel :
         /// </summary>
         /// <param name="plan">The builder's plan.</param>
         /// <param name="payload">The raw announcement data.</param>
-        /// <param name="storageStrategy">The storage strategy.</param>
         /// <returns>
         /// Return the message id
         /// </returns>
     public async ValueTask<string> SendAsync(
         IProducerPlan plan,
-        Announcement payload,
-        ImmutableArray<IProducerStorageStrategyWithFilter> storageStrategy)
+        Announcement payload)
     {
-        foreach (var strategy in storageStrategy)
+        ImmutableArray<IProducerStorageStrategyWithFilter> storageStrategy = plan.StorageStrategies;
+            foreach (var strategy in storageStrategy)
         {
             await strategy.SaveBucketAsync(payload.Metadata.MessageId, payload.Segments, EventBucketCategories.Segments, payload.Metadata);
             await strategy.SaveBucketAsync(payload.Metadata.MessageId, payload.InterceptorsData, EventBucketCategories.Interceptions, payload.Metadata);
