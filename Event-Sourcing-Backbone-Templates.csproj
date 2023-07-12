@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.2.148.0</PackageVersion>
+    <PackageVersion>1.2.149.0</PackageVersion>
     <PackageId>Event-Sourcing.Backbone.Templates</PackageId>
     <Title>Event Sourcing Backbone</Title>
     <Authors>Me</Authors>
