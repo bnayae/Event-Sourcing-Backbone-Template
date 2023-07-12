@@ -20,8 +20,6 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
     private readonly ILogger _logger;
     private readonly IProductCycleProducer _producer;
 
-    #region Ctor
-
     /// <summary>
     /// Initializes a new instance.
     /// </summary>
@@ -41,10 +39,6 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         logger.LogInformation("Consumer starts listening on: {URI}", ProductCycleConstants.URI);
     }
 
-    #endregion Ctor
-
-    #region OnStartAsync
-
     /// <summary>
     /// Start Consumer Job.
     /// </summary>
@@ -62,10 +56,6 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         return Task.CompletedTask;
     }
 
-    #endregion // OnStartAsync
-
-    #region StopAsync
-
     /// <summary>
     /// Stops the Consumer Job.
     /// </summary>
@@ -76,10 +66,6 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         _cancellationTokenSource?.CancelSafe();
         await (_subscription?.Completion ?? Task.CompletedTask);
     }
-
-    #endregion // StopAsync
-
-    // TODO: enrich telemetry
 
     async ValueTask IProductCycleConsumer.IdeaAsync(ConsumerMetadata consumerMetadata, string title, string describe)
     {
