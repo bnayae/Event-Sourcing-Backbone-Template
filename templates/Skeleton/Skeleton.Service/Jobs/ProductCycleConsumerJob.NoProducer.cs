@@ -1,4 +1,6 @@
-﻿using Skeleton.Abstractions;
+﻿#pragma warning disable HAA0101 // Array allocation for params parameter
+
+using Skeleton.Abstractions;
 
 using EventSourcing.Backbone;
 using EventSourcing.Backbone.Building;
@@ -63,80 +65,80 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
         await (_subscription?.Completion ?? Task.CompletedTask);
     }
 
-    async ValueTask IProductCycleConsumer.IdeaAsync(ConsumerMetadata consumerMetadata, string title, string describe)
+    async ValueTask IProductCycleConsumer.IdeaAsync(ConsumerContext ctx, string title, string describe)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
-        _logger.Log(level, "handling {event} [{id}]: {title}", meta.Operation, meta.MessageId, title);
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        _logger.Log(level, "handling {event} [{id}]: {title}", meta.Signature.Operation, meta.MessageId, title);
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.PlanedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string doc)
+    async ValueTask IProductCycleConsumer.PlanedAsync(ConsumerContext ctx, string id, Version version, string doc)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
                                    ---
                                    {doc}
-                                   """, meta.Operation, id, version, doc);
+                                   """, meta.Signature.Operation, id, version, doc);
 
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.ReviewedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string[] notes)
+    async ValueTask IProductCycleConsumer.ReviewedAsync(ConsumerContext ctx, string id, Version version, string[] notes)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
                                    ---
                                    {notes}
-                                   """, meta.Operation, id, version, string.Join("\r\n- ", notes));
+                                   """, meta.Signature.Operation, id, version, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.ImplementedAsync(ConsumerMetadata consumerMetadata, string id, Version version)
+    async ValueTask IProductCycleConsumer.ImplementedAsync(ConsumerContext ctx, string id, Version version)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
-                                   """, meta.Operation, id, version);
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+                                   """, meta.Signature.Operation, id, version);
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.TestedAsync(ConsumerMetadata consumerMetadata, string id, Version version, string[] notes)
+    async ValueTask IProductCycleConsumer.TestedAsync(ConsumerContext ctx, string id, Version version, string[] notes)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
                                    ---
                                    {notes}
-                                   """, meta.Operation, id, version, string.Join("\r\n- ", notes));
+                                   """, meta.Signature.Operation, id, version, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.DeployedAsync(ConsumerMetadata consumerMetadata, string id, Version version)
+    async ValueTask IProductCycleConsumer.DeployedAsync(ConsumerContext ctx, string id, Version version)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
-        _logger.Log(level, "handling {event} [{id}]: {version}", meta.Operation, id, version);
+        _logger.Log(level, "handling {event} [{id}]: {version}", meta.Signature.Operation, id, version);
 
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 
-    async ValueTask IProductCycleConsumer.RejectedAsync(ConsumerMetadata consumerMetadata,
+    async ValueTask IProductCycleConsumer.RejectedAsync(ConsumerContext ctx,
                                                         string id,
                                                         System.Version version,
                                                         string operation,
                                                         NextStage nextStage,
                                                         string[] notes)
     {
-        var meta = consumerMetadata.Metadata;
+        var meta = ctx.Metadata;
         LogLevel level = meta.Environment == "prod" ? LogLevel.Debug : LogLevel.Information;
         _logger.Log(level, """
                                    handling {event} [{id}]: {version}
@@ -145,9 +147,9 @@ public sealed class ConsumerJob : IHostedService, IProductCycleConsumer
 
                                    {notes}
                                    ---
-                                   """, meta.Operation, id, version, operation, string.Join("\r\n- ", notes));
+                                   """, meta.Signature.Operation, id, version, operation, string.Join("\r\n- ", notes));
 
-        await consumerMetadata.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
+        await ctx.AckAsync(); // not required on default setting or when configuring the consumer to Ack on success.
     }
 }
 

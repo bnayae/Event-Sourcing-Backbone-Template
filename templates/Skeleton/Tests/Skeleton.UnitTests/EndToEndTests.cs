@@ -1,12 +1,11 @@
-using System.Threading.Channels;
+#pragma warning disable HAA0301 // Closure Allocation Source
+#pragma warning disable HAA0601 // Value type to reference type conversion causing boxing allocation
 
+using System.Threading.Channels;
 using EventSourcing.Backbone;
 using EventSourcing.Backbone.Building;
-
 using FakeItEasy;
-
 using Microsoft.Extensions.Logging;
-
 using Xunit;
 using Xunit.Abstractions;
 using Skeleton.Abstractions;
@@ -27,16 +26,16 @@ public sealed class EndToEndTests
     public EndToEndTests(ITestOutputHelper outputHelper)
     {
         _outputHelper = outputHelper;
-        A.CallTo(() => _subscriber.IdeaAsync(A<ConsumerMetadata>.Ignored, A<string>.Ignored, A<string>.Ignored))            
-            .Invokes((ConsumerMetadata meta, string title, string desc) =>
+        A.CallTo(() => _subscriber.IdeaAsync(A<ConsumerContext>.Ignored, A<string>.Ignored, A<string>.Ignored))            
+            .Invokes((ConsumerContext meta, string title, string desc) =>
             {
-                _outputHelper.WriteLine($"{meta.Metadata.Operation}, {title}, {desc}");
+                _outputHelper.WriteLine($"{meta.Metadata.Signature.Operation}, {title}, {desc}");
             });
         A.CallTo(() => _subscriber.PlanedAsync(
-                            A<ConsumerMetadata>.Ignored, A<string>.Ignored, A<Version>.Ignored, A<string>.Ignored))
-            .Invokes((ConsumerMetadata meta, string title, Version version, string desc) =>
+                            A<ConsumerContext>.Ignored, A<string>.Ignored, A<Version>.Ignored, A<string>.Ignored))
+            .Invokes((ConsumerContext meta, string title, Version version, string desc) =>
             {
-                _outputHelper.WriteLine($"{meta.Metadata.Operation}, {title}, {version}, {desc}");
+                _outputHelper.WriteLine($"{meta.Metadata.Signature.Operation}, {title}, {version}, {desc}");
             });
     }
 
@@ -68,14 +67,14 @@ public sealed class EndToEndTests
 
         // validation
         A.CallTo(() => _subscriber.IdeaAsync(
-                            A<ConsumerMetadata>.That.Matches(
-                                        m => m.Metadata.Operation == nameof(IProductCycleConsumer.IdeaAsync)),
+                            A<ConsumerContext>.That.Matches(
+                                        m => m.Metadata.Signature.Operation == nameof(IProductCycleConsumer.IdeaAsync)),
                             "make a thing",
                             "bla bla"))
                         .MustHaveHappenedOnceExactly();
         A.CallTo(() => _subscriber.PlanedAsync(
-                            A<ConsumerMetadata>.That.Matches(
-                                        m => m.Metadata.Operation == nameof(IProductCycleConsumer.PlanedAsync)),
+                            A<ConsumerContext>.That.Matches(
+                                        m => m.Metadata.Signature.Operation == nameof(IProductCycleConsumer.PlanedAsync)),
                             "001",
                             version,
                             "bla...bla..."))

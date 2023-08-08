@@ -1,13 +1,11 @@
+#pragma warning disable HAA0301 // Closure Allocation Source
+#pragma warning disable HAA0601 // Value type to reference type conversion causing boxing allocation
+
 using EventSourcing.Backbone;
-
 using FakeItEasy;
-
 using Microsoft.Extensions.Logging;
-
 using Skeleton.Abstractions;
-
 using StackExchange.Redis;
-
 using Xunit.Abstractions;
 
 
@@ -40,17 +38,17 @@ public sealed class EndToEndRedisTests : IDisposable
         _outputHelper = outputHelper;
 
 
-        A.CallTo(() => _subscriber.IdeaAsync(A<ConsumerMetadata>.Ignored, A<string>.Ignored, A<string>.Ignored))
-            .ReturnsLazily((ConsumerMetadata meta, string title, string desc) =>
+        A.CallTo(() => _subscriber.IdeaAsync(A<ConsumerContext>.Ignored, A<string>.Ignored, A<string>.Ignored))
+            .ReturnsLazily((ConsumerContext meta, string title, string desc) =>
             {
-                _outputHelper.WriteLine($"{meta.Metadata.Operation}, {title}, {desc}");
+                _outputHelper.WriteLine($"{meta.Metadata.Signature.Operation}, {title}, {desc}");
                 return ValueTask.CompletedTask;
             });
         A.CallTo(() => _subscriber.PlanedAsync(
-                            A<ConsumerMetadata>.Ignored, A<string>.Ignored, A<Version>.Ignored, A<string>.Ignored))
-            .ReturnsLazily((ConsumerMetadata meta, string title, Version version, string desc) =>
+                            A<ConsumerContext>.Ignored, A<string>.Ignored, A<Version>.Ignored, A<string>.Ignored))
+            .ReturnsLazily((ConsumerContext meta, string title, Version version, string desc) =>
             {
-                _outputHelper.WriteLine($"{meta.Metadata.Operation}, {title}, {version}, {desc}");
+                _outputHelper.WriteLine($"{meta.Metadata.Signature.Operation}, {title}, {version}, {desc}");
                 return ValueTask.CompletedTask;
             });
 
@@ -61,7 +59,7 @@ public sealed class EndToEndRedisTests : IDisposable
             A<EventId>.Ignored,
             A<string>.Ignored,
             A<Exception>.Ignored,
-            A<Func<string, Exception, string>>.Ignored
+            A<Func<string, Exception?, string>>.Ignored
             ))
             .Invokes<object, LogLevel, EventId, string, Exception, Func<string, Exception, string>>(
                 (level, id, msg, ex, fn) =>
@@ -102,14 +100,14 @@ public sealed class EndToEndRedisTests : IDisposable
 
         // validation
         A.CallTo(() => _subscriber.IdeaAsync(
-                            A<ConsumerMetadata>.That.Matches(
-                                        m => m.Metadata.Operation == nameof(IProductCycleConsumer.IdeaAsync)),
+                            A<ConsumerContext>.That.Matches(
+                                        m => m.Metadata.Signature.Operation == nameof(IProductCycleConsumer.IdeaAsync)),
                             "make a thing",
                             "bla bla"))
                         .MustHaveHappenedOnceExactly();
         A.CallTo(() => _subscriber.PlanedAsync(
-                            A<ConsumerMetadata>.That.Matches(
-                                        m => m.Metadata.Operation == nameof(IProductCycleConsumer.PlanedAsync)),
+                            A<ConsumerContext>.That.Matches(
+                                        m => m.Metadata.Signature.Operation == nameof(IProductCycleConsumer.PlanedAsync)),
                             "001",
                             version,
                             "bla...bla..."))
