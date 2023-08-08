@@ -1,5 +1,7 @@
 *Framework Status: Beta (Graduating to RC soon; API subject to change).*  
 
+[![Build & Deploy NuGet](https://github.com/bnayae/Event-Sourcing-Backbone-Template/actions/workflows/Deploy.yml/badge.svg)](https://github.com/bnayae/Event-Sourcing-Backbone-Template/actions/workflows/Deploy.yml)  
+
 ## Get started 
 
 ### CLI
