@@ -1,3 +1,9 @@
+/*********************** RUN INTEGRATION TEST PREREQUISITE ********************************
+ * cd ./dockers/compose
+ * docker compose up -d
+ * see more on the ReadMe file
+ ******************************************************************************************/
+
 #pragma warning disable HAA0301 // Closure Allocation Source
 #pragma warning disable HAA0601 // Value type to reference type conversion causing boxing allocation
 

@@ -14,7 +14,7 @@ namespace Skeleton.Abstractions;
 #if (EnableConsumer)
 [EventsContract(EventsContractType.Consumer)]
 #endif
-[Obsolete("Choose either the Producer or Consumer version of this interface.", true)]
+[Obsolete("Choose either the Producer or Consumer version of this interface.")]
 public interface IProductCycle
 {
     ValueTask IdeaAsync(string title, string describe);
