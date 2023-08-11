@@ -48,7 +48,7 @@ public interface IProductCycleVersionAware
     [EventSourceVersion(2, Date = "2023-08-16", Remark = "Example of a version-aware API")]
     ValueTask RejectedAsync(string id, Version version, string operation, NextStage nextStage, params string[] notes);
 
-    #region Fallback
+    #region FallbackAsync
 
     /// <summary>
     /// Consumers the fallback.
@@ -57,7 +57,7 @@ public interface IProductCycleVersionAware
     /// <param name="ctx">The context.</param>
     /// <param name="target">The target.</param>
     /// <returns></returns>
-    public static async Task<bool> Fallback(IConsumerInterceptionContext ctx, IProductCycleVersionAwareConsumer target)
+    public static async Task<bool> FallbackAsync(IConsumerInterceptionContext ctx, IProductCycleVersionAwareConsumer target)
     {
         ILogger logger = ctx.Logger;
         ConsumerContext consumerContext = ctx.Context;
@@ -84,10 +84,10 @@ public interface IProductCycleVersionAware
             return true;
         }
 
-        logger.LogWarning("Fallback didn't handle: {uri}, {signature}", meta.Uri, meta.Signature);
+        logger.LogWarning("FallbackAsync didn't handle: {uri}, {signature}", meta.Uri, meta.Signature);
         //await ctx.CancelAsync();
         return false;
     }
 
-    #endregion // Fallback
+    #endregion // FallbackAsync
 }
